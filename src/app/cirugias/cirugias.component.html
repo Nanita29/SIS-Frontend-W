@@ -1,0 +1,94 @@
+<div class="mx-auto" style="width: 1200px;">
+  <div class="card">
+    <div class="card-header">
+
+
+      <div *ngIf="id>0" class="h3">Modificar los datos:</div>
+      <div *ngIf="estado==1" class="h3">Ingrese los datos para registrar:</div>
+      
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <div class="h6">
+          <h5>Datos la cirugía:</h5>
+          
+          <div class="form-row">
+
+            <div class="col">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Paciente</div>
+                </div>
+                <select *ngIf="id>0" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="cirugia_e.id_paciente">
+                  <option selected>Seleccione a su paciente:</option>
+                  <option  *ngFor="let pacientes of pacientes" value={{pacientes.id}}>{{pacientes.name}}</option>
+                </select>
+                <select *ngIf="estado==1" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="cirugia.id_paciente">
+                  <option selected>Seleccione a su paciente:</option>
+                  <option  *ngFor="let pacientes of pacientes" value={{pacientes.id}}>{{pacientes.name}}</option>
+                </select>
+              </div>
+            </div> 
+
+            <div class="col">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Sala de cirugía</div>
+                </div>
+
+                <select *ngIf="id>0" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="cirugia_e.id_sala">
+                  <option selected>Selecciona la sala que deseas reservar:</option>
+                  <option  *ngFor="let salas of salas" value={{salas.id}}>{{salas.nombre}}</option>
+                </select>
+
+                <select *ngIf="estado==1" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="cirugia.id_sala">
+                  <option selected>Selecciona la sala que deseas reservar:</option>
+                  <option  *ngFor="let salas of salas" value={{salas.id}}>{{salas.nombre}}</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+
+         
+          <div class="form-row">
+
+            <div class="col">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Fecha y hora de la cirugía</div>
+                </div>
+                <input *ngIf="id>0" type="date" class="form-control" id="inlineFormInputGroup" [(ngModel)]="cirugia_e.fechaIngreso">
+                <input *ngIf="estado==1" type="date" class="form-control" id="inlineFormInputGroup" [(ngModel)]="cirugia.fechaIngreso">
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Fecha y hora de fin de la cirugía</div>
+                </div>
+                <input *ngIf="id>0" type="date" class="form-control" id="inlineFormInputGroup" [(ngModel)]="cirugia_e.fechaSalida">
+                <input *ngIf="estado==1" type="date" class="form-control" id="inlineFormInputGroup" [(ngModel)]="cirugia.fechaSalida">
+              </div>
+            </div>
+
+          </div>
+          <h6>Tomar en cuenta que los horarios de salida serán aproximados, posteriormente se podrán editar en caso de inconvenientes</h6>
+          <br> 
+
+          <div class="text-center">
+            <button  *ngIf="id>0" (click)="update()" class="btn btn-info">Guardar</button>
+            <button *ngIf="estado==1" (click)="registrarCirugia()" class="btn btn-info">Registrar</button>
+
+          </div>
+          <br>
+        </div>
+        
+        <footer class="blockquote-footer">Sistema de Cirugías<cite title="Source Title"> -Hospital de Mateo y Narda</cite></footer>
+      </blockquote>
+    </div>
+  </div>
+  
+</div>
+

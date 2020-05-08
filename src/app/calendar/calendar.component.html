@@ -1,0 +1,68 @@
+<div class="mx-auto" style="width: 1400px;" >
+  <div class="card border-info mb-3">
+    <div class="card-header">
+      <div class="h5">Mis Cirugías</div>
+      
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <div class="h6">
+          <div class="h3">
+            <a class="btn btn-info btn-sm" routerLink="/cirugias">Nueva Cirugía</a>
+          </div>
+        
+          <table class = "table table-bordered table-striped">
+            <thead class = "thead-dark">
+              <tr>
+                <th scope="col" class="text-center">Id</th>
+                <th scope="col" class="text-center">Paciente</th>
+                <th scope="col" class="text-center">Fecha de Cirugía</th>
+                <th scope="col" class="text-center">Fecha de Cirugía</th>
+                <th scope="col" class="text-center">Detalles</th>
+                <!-- <th scope="col" class="text-center">Personal</th> -->
+              </tr>
+            </thead>
+        
+            <tbody>
+              <tr *ngFor="let valors of valor | paginate: { itemsPerPage: 10, currentPage: pageActual }">
+                <td class="text-center">{{valors.id}}</td>
+                <td class="text-center">{{valors.id_paciente}}</td>
+                <th class="text-center">{{valors.fechaIngreso}}</th>
+                <th class="text-center">{{valors.fechaSalida}}</th>
+                <td class="text-center"><a class="btn btn-info btn-sm" routerLink="/cirugias/{{valors.id}}">Ver-Editar</a></td>
+                <!-- <td class="text-center"><a class="btn btn-info btn-sm" routerLink="/personal_cirugia/{{valors.id}}">Agregar-Editar</a></td> -->
+              </tr>
+            </tbody>
+        
+          </table>
+          <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+
+
+        </div> 
+      </blockquote>
+    </div>
+  </div>
+
+  <div class="card border-info mb-3">
+    <div class="card-header">
+      <div class="h5">Mis Calendario</div>
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        
+        <div class="h6">
+          <div class="h3">
+            <button type="button" class="btn btn-info" (click)="boton()" >Ver mi Calendario</button>
+          </div>
+
+          <div id="full-calendar" load="boton()"></div>
+        </div> 
+      </blockquote>
+    </div>
+  </div>
+      
+      
+</div >
+
+  
+ 

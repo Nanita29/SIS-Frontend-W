@@ -1,0 +1,101 @@
+
+<div class="mx-auto" style="width: 1200px;">
+  <div class="card">
+    <div class="card-header">
+
+
+      <div *ngIf="id>0" class="h3">Modificar los datos:</div>
+      <div *ngIf="estado==1" class="h3">Ingrese los datos para registrar:</div>
+      
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <div class="h6">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" for="nombre">Nombre:</span>
+            </div>
+            <input *ngIf="id>0" [(ngModel)]="user_e.name" type="text" class="form-control" id="name">  
+            <input *ngIf="estado==1" [(ngModel)]="user.name" type="text" class="form-control" id="name">  
+          </div>
+    
+          <div  class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" for="email">Correo Electrónico:</span>
+            </div>
+            <input *ngIf="id>0" [(ngModel)]="user_e.email" type="email" class="form-control" id="email"> 
+            <input *ngIf="estado==1" [(ngModel)]="user.email" type="email" class="form-control" id="email"> 
+          </div>
+    
+          
+          <!-- <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" for="nacimiento">Fecha de nacimiento:</span>
+            </div>
+            <input [(ngModel)]="user.nacimiento" type="date" class="form-control" id="nacimiento"> 
+          </div>
+    
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" for="direccion">Dirección de domicilio:</span>
+            </div>
+            <input [(ngModel)]="user.direccion" type="text" class="form-control" id="direccion"> 
+          </div>
+    
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" for="celular">Celular:</span>
+            </div>
+            <input [(ngModel)]="user.celular" type="number" class="form-control" id="celular"> 
+          </div>
+    
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" for="telefono">Teléfono:</span>
+            </div>
+            <input [(ngModel)]="user.telefono" type="number" class="form-control" id="telefono" > 
+          </div> -->
+    
+          <!-- <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Rol</label>
+            </div>
+            <select [(ngModel)]="user.id_rol" class="custom-select" id="id_rol">
+              <option selected>Elija el rol que cumplirá...</option>
+              <option value="1">Administrador</option>
+              <option value="2">Doctor en Jefe</option>
+              <option value="3">Encargado de Materiales</option>
+              <option value="4">Paciente</option>
+            </select>
+          </div> -->
+    
+          <div *ngIf="estado==1" class="input-group mb-3">
+            <div  class="input-group-prepend">
+              <span class="input-group-text" for="password">Contraseña:</span>
+            </div>
+            <input [(ngModel)]="user.password" type="password" class="form-control" id="password" > 
+          </div>
+    
+          <div *ngIf="estado==1" class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" for="password">Confirmar contraseña:</span>
+            </div>
+            <input [(ngModel)]="user.password_confirmation" type="password" class="form-control" id="password_confirmation" > 
+          </div>
+    
+          
+          <div class="text-center">
+            <button *ngIf="id>0" (click)="update()" class="btn btn-info">Guardar</button>
+            <button *ngIf="estado==1" (click)="registrarUser()" class="btn btn-info">Registrar</button>
+    
+          </div>
+        </div>
+        
+        <footer class="blockquote-footer">Sistema de Cirugías<cite title="Source Title"> -Hospital de Mateo y Narda</cite></footer>
+      </blockquote>
+    </div>
+  </div>
+  
+</div>
+
+

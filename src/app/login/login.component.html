@@ -1,0 +1,31 @@
+<div class="text-center">
+  <div class="mx-auto" style="width: 700px;" >
+    <div class="card mb-3" style="max-width: 10540px;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          
+          <img src="src\assets\img\hospital.png" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h4>Inicie sesión:</h4>
+            <form>
+              <div class="form-group">
+                <input [(ngModel)]="user.email" type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Correo electrónico"> 
+              </div>
+          
+              <div class="form-group">
+                <input [(ngModel)]="user.password"type="password" class="form-control" name="password" placeholder="Contaseña"> 
+              </div>
+          
+              <button (click)="ingresarCuenta()" class="btn btn-lg btn-primary">Ingresar</button>
+          
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+</div>
