@@ -19,8 +19,13 @@ import { NuevasalaComponent } from './nuevasala/nuevasala.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { PersonalComponent } from './personal/personal.component';
 import { NuevopersonalComponent } from './nuevopersonal/nuevopersonal.component';
-import { PersonalCirugiaComponent } from './personal-cirugia/personal-cirugia.component'; 
-
+import { PersonalCirugiaComponent } from './personal-cirugia/personal-cirugia.component';
+import { NuevoinsumoComponent } from './nuevoinsumo/nuevoinsumo.component';
+import { InsumoComponent } from './insumo/insumo.component';
+import { MaterialComponent } from './material/material.component';
+import { NuevomaterialComponent } from './nuevomaterial/nuevomaterial.component';
+import { InsumoCirugiaComponent } from './insumo-cirugia/insumo-cirugia.component';
+import { MaterialCirugiaComponent } from './material-cirugia/material-cirugia.component';
 
 
 const routes: Route[] = [
@@ -39,7 +44,15 @@ const routes: Route[] = [
   {path: 'personal', component: PersonalComponent},
   {path: 'nuevopersonal/:id', component: NuevopersonalComponent},
   {path: 'nuevopersonal', component: NuevopersonalComponent},
-  {path: 'personal_cirugia/:id', component: PersonalCirugiaComponent}
+  {path: 'insumos', component: InsumoComponent},
+  {path: 'nuevoinsumo/:id', component: NuevoinsumoComponent},
+  {path: 'nuevoinsumo', component: NuevoinsumoComponent},
+  {path: 'materiales', component: MaterialComponent},
+  {path: 'nuevomaterial/:id', component: NuevomaterialComponent},
+  {path: 'nuevomaterial', component: NuevomaterialComponent},
+  {path: 'personal_cirugia/:id', component: PersonalCirugiaComponent},
+  {path: 'insumo_cirugia/:id', component: InsumoCirugiaComponent},
+  {path: 'material_cirugia/:id', component: MaterialCirugiaComponent}
 ];
 
 @NgModule({
@@ -55,7 +68,13 @@ const routes: Route[] = [
     NuevasalaComponent,
     PersonalComponent,
     NuevopersonalComponent,
-    PersonalCirugiaComponent
+    PersonalCirugiaComponent,
+    InsumoComponent,
+    NuevoinsumoComponent,
+    MaterialComponent,
+    NuevomaterialComponent,
+    InsumoCirugiaComponent,
+    MaterialCirugiaComponent
   ],
   imports: [
     BrowserModule,

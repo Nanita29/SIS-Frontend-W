@@ -17,8 +17,8 @@ public valor;
   constructor(private httpClient: HttpClient) {
     
     this.funciona().subscribe((data) => {
-      console.log(data);
-      this.valor=data;
+      console.log(data[0]);
+      this.valor=data[0];
       console.log(length);
     }, error => {
       console.log(error);

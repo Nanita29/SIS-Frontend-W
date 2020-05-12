@@ -1,34 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { User } from '../interfaces/user';
+import { Insumo } from '../interfaces/insumo';
 
 @Component({
-  selector: 'app-salas',
-  templateUrl: './salas.component.html',
-  styleUrls: ['./salas.component.css']
+  selector: 'app-insumo',
+  templateUrl: './insumo.component.html',
+  styleUrls: ['./insumo.component.css']
 })
-export class SalasComponent implements OnInit {
+export class InsumoComponent implements OnInit {
 
-  public valor;
+  public insumo;
   API_ENDPOINT= 'http://177.222.52.26:8000/api'
-  user: User[];
+  insu: Insumo[];
+
   constructor(private httpClient: HttpClient) {
-    
-    this.obtener_salas().subscribe((data) => {
+
+    this.obtener_insumos().subscribe((data) => {
       console.log(data);
-      this.valor=data[0];
+      this.insumo=data;
     }, error => {
       console.log(error);
     
     });; 
 
-  }
+   }
 
   ngOnInit() {
   } 
-  obtener_salas(){
+
+  obtener_insumos(){
     const headers = new HttpHeaders( {'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("token")});
-    return this.httpClient.post(this.API_ENDPOINT + '/salas', {}, {headers: headers});
+    return this.httpClient.post(this.API_ENDPOINT + '/insumo/mostrar', {}, {headers: headers});
 
   }
 

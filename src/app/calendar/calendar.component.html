@@ -1,7 +1,7 @@
 <div class="mx-auto" style="width: 1400px;" >
   <div class="card border-info mb-3">
     <div class="card-header">
-      <div class="h5">Mis Cirugías</div>
+      <div class="h3">Mis Cirugías</div>
       
     </div>
     <div class="card-body">
@@ -19,7 +19,9 @@
                 <th scope="col" class="text-center">Fecha de Cirugía</th>
                 <th scope="col" class="text-center">Fecha de Cirugía</th>
                 <th scope="col" class="text-center">Detalles</th>
-                <!-- <th scope="col" class="text-center">Personal</th> -->
+                <th scope="col" class="text-center">Personal</th>
+                <th scope="col" class="text-center">Insumo</th>
+                <th scope="col" class="text-center">Material</th>
               </tr>
             </thead>
         
@@ -30,7 +32,9 @@
                 <th class="text-center">{{valors.fechaIngreso}}</th>
                 <th class="text-center">{{valors.fechaSalida}}</th>
                 <td class="text-center"><a class="btn btn-info btn-sm" routerLink="/cirugias/{{valors.id}}">Ver-Editar</a></td>
-                <!-- <td class="text-center"><a class="btn btn-info btn-sm" routerLink="/personal_cirugia/{{valors.id}}">Agregar-Editar</a></td> -->
+                <td class="text-center"><a class="btn btn-info btn-sm" routerLink="/personal_cirugia/{{valors.id}}">Agregar-Editar</a></td>
+                <td class="text-center"><a class="btn btn-info btn-sm" routerLink="/insumo_cirugia/{{valors.id}}">Agregar-Editar</a></td>
+                <td class="text-center"><a class="btn btn-info btn-sm" routerLink="/material_cirugia/{{valors.id}}">Agregar-Editar</a></td>
               </tr>
             </tbody>
         
@@ -45,7 +49,7 @@
 
   <div class="card border-info mb-3">
     <div class="card-header">
-      <div class="h5">Mis Calendario</div>
+      <div class="h3">Mis Calendario</div>
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0">

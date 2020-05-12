@@ -4,8 +4,8 @@
     <div class="card-header">
 
 
-      <div *ngIf="id>0" class="h3">Modificar el personal para la cirugía número:</div>
-      <div *ngIf="estado==1" class="h3">Ingrese los paciente para agregar a la cirugía </div>
+      <div *ngIf="id>0" class="h3">Modificar el material para la cirugía número:</div>
+      <div *ngIf="estado==1" class="h3">Ingrese los materiales para agregar a la cirugía </div>
       
     </div>
     <div class="card-body">
@@ -19,16 +19,20 @@
               <tr >
                 <th scope="col" class="text-center">Id</th>
                 <th scope="col" class="text-center">Nombre</th>
-                <th scope="col" class="text-center">Cargo</th>
+                <th scope="col" class="text-center">Descripción</th>
+                <th scope="col" class="text-center">Cantidad Existente</th>
+                <th scope="col" class="text-center">Cantidad Requerida</th>
                 <th scope="col" class="text-center">Acción</th>
               </tr>
             </thead> 
         
             <tbody>
-              <tr *ngFor="let personal of personal " >
-                <td class="text-center">{{personal.id}}</td> 
-                <th class="text-center">{{personal.nombre}} {{personal.apellidoP}} {{personal.apellidoM}}</th>
-                <th class="text-center">{{personal.rol}}</th>
+              <tr *ngFor="let material of material " >
+                <td class="text-center">{{material.id}}</td> 
+                <th class="text-center">{{material.nombre}}</th>
+                <th class="text-center">{{material.descripcion}}</th>
+                <th class="text-center">{{material.cantidad}}</th>
+                <th class="text-center">{{material.cantidad}}</th>
                 <td class="text-center">
                   <div class="text-center">
                     <button  *ngIf="id>0" (click)="quitar()" class="btn btn-info">Eliminar</button>
@@ -48,5 +52,4 @@
   </div>
   
 </div>
-
 

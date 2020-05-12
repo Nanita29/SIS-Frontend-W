@@ -24,6 +24,13 @@
 
           <!--PANTALLAS DE ENCARGADO DE MATERIALES ROL 3-->
 
+          <li class="nav-item">
+            <a *ngIf="valor.id_rol==3" class="nav-link" routerLink="/insumos" tabindex="-1" aria-disabled="true">Insumos</a>
+          </li>
+          <li class="nav-item">
+            <a *ngIf="valor.id_rol==3" class="nav-link" routerLink="/materiales" tabindex="-1" aria-disabled="true">Materiales</a>
+          </li>
+
           <!--PANTALLAS DE ADMINISTRADOR ROL 1-->
 
           <li class="nav-item">
@@ -39,7 +46,10 @@
             <a *ngIf="valor.id_rol==1" class="nav-link" routerLink="/personal" tabindex="-1" aria-disabled="true">Personal</a>
           </li>
           <li class="nav-item">
-            <a *ngIf="valor.id_rol==1" class="nav-link" routerLink="/doctores" tabindex="-1" aria-disabled="true">Doctores</a>
+            <a *ngIf="valor.id_rol==1" class="nav-link" routerLink="/insumos" tabindex="-1" aria-disabled="true">Insumos</a>
+          </li>
+          <li class="nav-item">
+            <a *ngIf="valor.id_rol==1" class="nav-link" routerLink="/materiales" tabindex="-1" aria-disabled="true">Materiales</a>
           </li>
 
 

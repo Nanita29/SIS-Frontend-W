@@ -1,35 +1,38 @@
-
 <div class="mx-auto" style="width: 1400px;">
   <div class="card border-info mb-3">
     <div class="card-header">
-      <div class="h3">Mis Pacientes</div>
+      <div class="h3">Materiales</div>
       
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0">
         <div class="h3">
-          <a class="btn btn-info btn-sm" routerLink="/register">Nuevo Paciente</a>
+          <a class="btn btn-info btn-sm" routerLink="/nuevomaterial">Nuevo Material</a>
         </div>
         <div class="h6">
           
           
-
+ 
           <table class = "table table-bordered table-striped">
             <thead class = "thead-dark">
               <tr >
                 <th scope="col" class="text-center">Id</th>
-                <th scope="col" class="text-center">Email</th>
                 <th scope="col" class="text-center">Nombre</th>
+                <th scope="col" class="text-center">Descripción</th>
+                <th scope="col" class="text-center">Cantidad</th>
+                <th scope="col" class="text-center">Estado</th>
                 <th scope="col" class="text-center">Acción</th>
               </tr>
             </thead>
         
             <tbody>
-               <tr *ngFor="let valor of valor">
-                <td class="text-center">{{valor.id}}</td> 
-                <th class="text-center">{{valor.email}}</th>
-                <th class="text-center">{{valor.name}}</th>
-                <td class="text-center"><a class="btn btn-info btn-sm" routerLink="/register/{{valor.id}}">Ver-Editar</a></td> 
+               <tr *ngFor="let material of materiales">
+                <td class="text-center">{{material.id}}</td> 
+                <th class="text-center">{{material.nombre}}</th>
+                <th class="text-center">{{material.descripcion}}</th>
+                <th class="text-center">{{material.cantidad}}</th>
+                <th class="text-center">{{material.estado}}</th>
+                <td class="text-center"><a class="btn btn-info btn-sm" routerLink="/nuevomaterial/{{material.id}}">Ver-Editar</a></td> 
                </tr>
             </tbody>
             
@@ -42,4 +45,3 @@
   </div>
   
 </div>
-
