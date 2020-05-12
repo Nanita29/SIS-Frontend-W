@@ -71,7 +71,12 @@
             </tbody>
             
           </table>
-          <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+          <pagination-controls  
+            (pageChange)="pageActual = $event" 
+            responsive="true" 
+            previousLabel="Anterior" 
+            nextLabel="Siguiente">
+          </pagination-controls>
         </div>
         
         <footer class="blockquote-footer">Sistema de Cirugías<cite title="Source Title"> -Hospital de Mateo y Narda</cite></footer>
