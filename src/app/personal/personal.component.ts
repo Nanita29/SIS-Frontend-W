@@ -9,7 +9,7 @@ import { Personal } from '../interfaces/personal';
 })
 export class PersonalComponent implements OnInit {
 
-  public valor;
+  public personals;
   public cargo;
   API_ENDPOINT= 'http://177.222.52.26:8000/api'
   user: Personal[];
@@ -17,7 +17,7 @@ export class PersonalComponent implements OnInit {
   constructor(private httpClient: HttpClient) { 
     this.obtener_personal().subscribe((data) => {
       console.log(data);
-      this.valor=data;
+      this.personals=data;
       /* for(var i = 0;i<this.valor.length;i++) { 
         this.cargo = this.valor[i]['id_rol']
         if (this.cargo[i]=="1"){

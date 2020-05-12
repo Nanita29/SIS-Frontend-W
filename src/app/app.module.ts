@@ -26,7 +26,12 @@ import { MaterialComponent } from './material/material.component';
 import { NuevomaterialComponent } from './nuevomaterial/nuevomaterial.component';
 import { InsumoCirugiaComponent } from './insumo-cirugia/insumo-cirugia.component';
 import { MaterialCirugiaComponent } from './material-cirugia/material-cirugia.component';
-
+import { InsumoPipe } from './insumo/insumo.pipe';
+import { MaterialPipe } from './material/material.pipe';
+import { PersonalPipe } from './personal/personal.pipe';
+import { SalaPipe } from './salas/sala.pipe';
+import { CirugiaPipe } from './calendar/cirugia.pipe';
+import { PacientePipe } from './pacientes/paciente.pipe';
 
 const routes: Route[] = [
   {path: '', component: LoginComponent},
@@ -74,8 +79,15 @@ const routes: Route[] = [
     MaterialComponent,
     NuevomaterialComponent,
     InsumoCirugiaComponent,
-    MaterialCirugiaComponent
+    MaterialCirugiaComponent,
+    InsumoPipe,
+    MaterialPipe,
+    PersonalPipe,
+    SalaPipe,
+    CirugiaPipe,
+    PacientePipe
   ],
+  
   imports: [
     BrowserModule,
     NgxPaginationModule,

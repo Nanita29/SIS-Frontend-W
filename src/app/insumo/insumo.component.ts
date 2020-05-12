@@ -9,7 +9,7 @@ import { Insumo } from '../interfaces/insumo';
 })
 export class InsumoComponent implements OnInit {
 
-  public insumo;
+  public insumos;
   API_ENDPOINT= 'http://177.222.52.26:8000/api'
   insu: Insumo[];
 
@@ -17,7 +17,7 @@ export class InsumoComponent implements OnInit {
 
     this.obtener_insumos().subscribe((data) => {
       console.log(data);
-      this.insumo=data;
+      this.insumos=data;
     }, error => {
       console.log(error);
     

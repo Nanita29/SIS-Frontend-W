@@ -9,18 +9,18 @@ import { User } from '../interfaces/user';
 })
 export class SalasComponent implements OnInit {
 
-  public valor;
+  public salas;
   API_ENDPOINT= 'http://177.222.52.26:8000/api'
   user: User[];
   constructor(private httpClient: HttpClient) {
     
     this.obtener_salas().subscribe((data) => {
       console.log(data);
-      this.valor=data[0];
+      this.salas=data[0];
     }, error => {
       console.log(error);
     
-    });; 
+    });;  
 
   }
 

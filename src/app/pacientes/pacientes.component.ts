@@ -11,14 +11,14 @@ import { User } from '../interfaces/user';
 export class PacientesComponent implements OnInit {
 
   
-public valor;
+public pacientes;
   API_ENDPOINT= 'http://177.222.52.26:8000/api'
   user: User[];
   constructor(private httpClient: HttpClient) {
     
     this.funciona().subscribe((data) => {
       console.log(data[0]);
-      this.valor=data[0];
+      this.pacientes=data[0];
       console.log(length);
     }, error => {
       console.log(error);

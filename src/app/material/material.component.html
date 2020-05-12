@@ -9,6 +9,36 @@
         <div class="h3">
           <a class="btn btn-info btn-sm" routerLink="/nuevomaterial">Nuevo Material</a>
         </div>
+
+        <div class="form-row">
+
+          <div class="col">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Buscar por:</div>
+              </div>
+              <select class="form-control" id="selected" [(ngModel)]="selected">
+                <option value='nombre'>Nombre</option>
+                <option value='descripcion'>Descripción</option>
+                <option value='estado'>Estado</option>
+              </select>
+    
+            </div>
+          </div> 
+
+          <div class="col" >
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Escribir datos a buscar:</div>
+              </div>
+    
+              <input type="text" [(ngModel)]="filtertext" class="form-control" placeholder="Nombre, descripción, estado...">
+            
+            </div>
+          </div>
+
+        </div>
+
         <div class="h6">
           
           
@@ -26,7 +56,7 @@
             </thead>
         
             <tbody>
-               <tr *ngFor="let material of materiales">
+               <tr *ngFor="let material of materiales | material: filtertext: selected | paginate: { itemsPerPage: 5, currentPage: pageActual }">
                 <td class="text-center">{{material.id}}</td> 
                 <th class="text-center">{{material.nombre}}</th>
                 <th class="text-center">{{material.descripcion}}</th>
@@ -37,6 +67,7 @@
             </tbody>
             
           </table>
+          <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
         </div>
         
         <footer class="blockquote-footer">Sistema de Cirugías<cite title="Source Title"> -Hospital de Mateo y Narda</cite></footer>

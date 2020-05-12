@@ -21,7 +21,7 @@ export class CalendarComponent {
   public titulo=[];
   public fechaIn=[];
   public fechaSal=[];
-  public valor;
+  public cirugias;
   public eventosData;
 ;
   constructor(private httpClient: HttpClient) {
@@ -29,15 +29,15 @@ export class CalendarComponent {
     
     this.mostrar_cirugias().subscribe((data) => {
       
-      this.valor=data;
+      this.cirugias=data;
      
-      for(var i = 0;i<this.valor.length;i++) { 
-        this.titulo.push(this.valor[i]['id']);
-        this.fecha = this.valor[i]['fechaIngreso'].split("");
+      for(var i = 0;i<this.cirugias.length;i++) { 
+        this.titulo.push(this.cirugias[i]['id']);
+        this.fecha = this.cirugias[i]['fechaIngreso'].split("");
         this.fecha = this.fecha[0] + this.fecha[1] + this.fecha[2] + this.fecha[3] + this.fecha[5] + this.fecha[6] + this.fecha[8] + this.fecha[9];
         this.fechaIn.push(this.fecha);
 
-        this.fecha = this.valor[i]['fechaSalida'].split("");
+        this.fecha = this.cirugias[i]['fechaSalida'].split("");
         this.fecha = this.fecha[0] + this.fecha[1] + this.fecha[2] + this.fecha[3] + this.fecha[5] + this.fecha[6] + this.fecha[8] + this.fecha[9];
         this.fechaSal.push(this.fecha);
 
@@ -51,7 +51,7 @@ export class CalendarComponent {
 
 
   boton() {
-    /*for(var i = 0;i<this.valor.length;i++) { 
+    /*for(var i = 0;i<this.cirugias.length;i++) { 
       console.log(this.fechaSal[i]);
     }*/
     
@@ -66,7 +66,7 @@ export class CalendarComponent {
       }
       
     ];
-    for(var i = 0;i<this.valor.length;i++) { 
+    for(var i = 0;i<this.cirugias.length;i++) { 
       this.eventosData.push (
         {
           "title": "ID: "+this.titulo[i],

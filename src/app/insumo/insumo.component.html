@@ -9,10 +9,40 @@
         <div class="h3">
           <a class="btn btn-info btn-sm" routerLink="/nuevoinsumo">Nuevo Insumo</a>
         </div>
+
+
+
+        <div class="form-row">
+
+          <div class="col">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Buscar por:</div>
+              </div>
+              <select class="form-control" id="selected" [(ngModel)]="selected">
+                <option value='nombre'>Nombre</option>
+                <option value='descripcion'>Descripción</option>
+              </select>
+    
+            </div>
+          </div> 
+
+          <div class="col" >
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Escribir datos a buscar:</div>
+              </div>
+    
+              <input type="text" [(ngModel)]="filtertext" class="form-control" placeholder="Nombre, descripción...">
+            
+            </div>
+          </div>
+
+        </div>
+
+        
         <div class="h6">
           
-          
- 
           <table class = "table table-bordered table-striped">
             <thead class = "thead-dark">
               <tr >
@@ -25,16 +55,18 @@
             </thead>
         
             <tbody>
-               <tr *ngFor="let insumos of insumo">
-                <td class="text-center">{{insumos.id}}</td> 
-                <th class="text-center">{{insumos.nombre}}</th>
-                <th class="text-center">{{insumos.descripcion}}</th>
-                <th class="text-center">{{insumos.cantidad}}</th>
-                <td class="text-center"><a class="btn btn-info btn-sm" routerLink="/nuevoinsumo/{{insumos.id}}">Ver-Editar</a></td> 
+               <tr *ngFor="let insumo of insumos | insumo: filtertext: selected | paginate: { itemsPerPage: 5, currentPage: pageActual }">
+                <td class="text-center">{{insumo.id}}</td> 
+                <th class="text-center">{{insumo.nombre}}</th>
+                <th class="text-center">{{insumo.descripcion}}</th>
+                <th class="text-center">{{insumo.cantidad}}</th>
+                <td class="text-center"><a class="btn btn-info btn-sm" routerLink="/nuevoinsumo/{{insumo.id}}">Ver-Editar</a></td> 
                </tr>
             </tbody>
             
           </table>
+          <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+
         </div>
         
         <footer class="blockquote-footer">Sistema de Cirugías<cite title="Source Title"> -Hospital de Mateo y Narda</cite></footer>

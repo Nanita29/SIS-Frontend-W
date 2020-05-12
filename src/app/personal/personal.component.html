@@ -9,6 +9,38 @@
         <div class="h3">
           <a class="btn btn-info btn-sm" routerLink="/nuevopersonal">Nuevo Personal</a>
         </div>
+
+        <div class="form-row">
+
+          <div class="col">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Buscar por:</div>
+              </div>
+              <select class="form-control" id="selected" [(ngModel)]="selected">
+                <option value='nombre'>Nombre</option>
+                <option value='apellidoP'>Apellido paterno</option>
+                <option value='apellidoM'>Apellido materno</option>
+                <option value='telefono'>Teléfono</option>
+                <option value='rol'>Cargo</option>
+              </select>
+    
+            </div>
+          </div> 
+
+          <div class="col" >
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Escribir datos a buscar:</div>
+              </div>
+    
+              <input type="text" [(ngModel)]="filtertext" class="form-control" placeholder="Nombre, apellido, teléfono, cargo...">
+            
+            </div>
+          </div>
+
+        </div>
+
         <div class="h6">
           
           
@@ -27,18 +59,19 @@
             </thead> 
         
             <tbody>
-               <tr *ngFor="let valors of valor" >
-                <td class="text-center">{{valors.id}}</td> 
-                <th class="text-center">{{valors.nombre}}</th>
-                <th class="text-center">{{valors.apellidoP}} {{valors.apellidoM}}</th>
-                <th class="text-center">{{valors.direccion}}</th>
-                <th class="text-center">{{valors.telefono}}</th>
-                <th class="text-center">{{valors.rol}}</th>
-                <td class="text-center"><a class="btn btn-info btn-sm" routerLink="/nuevopersonal/{{valors.id}}">Ver-Editar</a></td> 
+               <tr *ngFor="let personal of personals | personal: filtertext: selected | paginate: { itemsPerPage: 5, currentPage: pageActual }" >
+                <td class="text-center">{{personal.id}}</td> 
+                <th class="text-center">{{personal.nombre}}</th>
+                <th class="text-center">{{personal.apellidoP}} {{personal.apellidoM}}</th>
+                <th class="text-center">{{personal.direccion}}</th>
+                <th class="text-center">{{personal.telefono}}</th>
+                <th class="text-center">{{personal.rol}}</th>
+                <td class="text-center"><a class="btn btn-info btn-sm" routerLink="/nuevopersonal/{{personal.id}}">Ver-Editar</a></td> 
                </tr>
             </tbody>
             
           </table>
+          <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
         </div>
         
         <footer class="blockquote-footer">Sistema de Cirugías<cite title="Source Title"> -Hospital de Mateo y Narda</cite></footer>
