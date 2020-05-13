@@ -1,11 +1,7 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
 <div class="mx-auto" style="width: 1400px;">
   <div class="card border-info mb-3">
     <div class="card-header">
-      <div class="h3">Materiales</div>
+      <div class="h3">Materiales</div> 
       
     </div>
     <div class="card-body">
@@ -32,12 +28,12 @@
 
           <div class="col" >
             <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">Escribir datos a buscar:</div>
+              
+              <div class="searchbar">
+                <input [(ngModel)]="filtertext"  class="search_input" type="text" name=""  placeholder="Nombre, descripción, estado...">
+                <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
               </div>
-    
-              <input type="text" [(ngModel)]="filtertext" class="form-control" placeholder="Nombre, descripción, estado...">
-            
+              
             </div>
           </div>
 
@@ -46,7 +42,7 @@
         <div class="h6">
           
           
- 
+
           <table class = "table table-bordered table-striped">
             <thead class = "thead-dark">
               <tr >
@@ -60,14 +56,14 @@
             </thead>
         
             <tbody>
-               <tr *ngFor="let material of materiales | material: filtertext: selected | paginate: { itemsPerPage: 5, currentPage: pageActual }">
+              <tr *ngFor="let material of materiales | material: filtertext: selected | paginate: { itemsPerPage: 5, currentPage: pageActual }">
                 <td class="text-center">{{material.id}}</td> 
                 <th class="text-center">{{material.nombre}}</th>
                 <th class="text-center">{{material.descripcion}}</th>
                 <th class="text-center">{{material.cantidad}}</th>
                 <th class="text-center">{{material.estado}}</th>
                 <td class="text-center"><a class="btn btn-info btn-sm" routerLink="/nuevomaterial/{{material.id}}">Ver-Editar</a></td> 
-               </tr>
+              </tr>
             </tbody>
             
           </table>
@@ -83,5 +79,5 @@
       </blockquote>
     </div>
   </div>
-   
+  
 </div>
