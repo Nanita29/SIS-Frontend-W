@@ -31,8 +31,8 @@
                 <th class="text-center">{{personal.rol}}</th>
                 <td class="text-center">
                   <div class="text-center">
-                    <button  *ngIf="id>0" (click)="quitar()" class="btn btn-info">Eliminar</button>
-                    <button *ngIf="estado==1" (click)="agregar()" class="btn btn-info">Agregar</button>
+                    <button  *ngIf="personal.estado==0" (click)="quitar()" class="btn btn-info">Eliminar</button>
+                    <button *ngIf="personal.estado>0" (click)="agregar()" class="btn btn-info">Agregar</button>
         
                   </div>
                 </td> 

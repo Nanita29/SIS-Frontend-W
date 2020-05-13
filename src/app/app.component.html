@@ -1,8 +1,13 @@
 <!-- <app-full-calendar></app-full-calendar> -->
-
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="shortcut icon" href="favicon.ico" />
-    <nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #adcee6;">
-      <a class="navbar-brand" >Sistema de Cirugías</a>
+    <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg" style="background-color: #1b5762">
+      <a class="navbar-brand" style="color: white">Sistema de Cirugías</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
       <div *ngIf="valor.id_rol>0" class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -16,40 +21,71 @@
             <a *ngIf="valor.id_rol==2" class="nav-link" routerLink="/register" tabindex="-1" aria-disabled="true">Nuevo Paciente</a>
           </li> -->
           <li class="nav-item">
-            <a *ngIf="valor.id_rol==2" class="nav-link" routerLink="/pacientes" tabindex="-1" aria-disabled="true">Mis Pacientes</a>
+            <a *ngIf="valor.id_rol==2" class="nav-link" routerLink="/pacientes" tabindex="-1" aria-disabled="true">
+              <i class="fa fa-users"></i>
+              Mis Pacientes
+            </a>
           </li>
           <li class="nav-item">
-            <a *ngIf="valor.id_rol==2" class="nav-link" routerLink="/calendar" tabindex="-1" aria-disabled="true">Mi Calendario</a>
+            <a *ngIf="valor.id_rol==2" class="nav-link" routerLink="/calendar" tabindex="-1" aria-disabled="true">
+              <i class="fa fa-calendar"></i>
+              Mi Calendario</a>
           </li>
 
           <!--PANTALLAS DE ENCARGADO DE MATERIALES ROL 3-->
 
           <li class="nav-item">
-            <a *ngIf="valor.id_rol==3" class="nav-link" routerLink="/insumos" tabindex="-1" aria-disabled="true">Insumos</a>
+            <a *ngIf="valor.id_rol==3" class="nav-link" routerLink="/insumos" tabindex="-1" aria-disabled="true">
+              <i class="fa fa-medkit"></i>
+              Insumos
+            </a>
           </li>
           <li class="nav-item">
-            <a *ngIf="valor.id_rol==3" class="nav-link" routerLink="/materiales" tabindex="-1" aria-disabled="true">Materiales</a>
+            <a *ngIf="valor.id_rol==3" class="nav-link" routerLink="/materiales" tabindex="-1" aria-disabled="true">
+              <i class="fa fa-stethoscope"></i>
+              Materiales
+            </a>
           </li>
 
           <!--PANTALLAS DE ADMINISTRADOR ROL 1-->
 
           <li class="nav-item">
-            <a *ngIf="valor.id_rol==1" class="nav-link" routerLink="/pacientes" tabindex="-1" aria-disabled="true">Pacientes</a>
+            <a *ngIf="valor.id_rol==1" class="nav-link" routerLink="/pacientes" tabindex="-1" aria-disabled="true">
+              <i class="fa fa-users"></i>
+              Pacientes
+            </a>
           </li>
           <li class="nav-item">
-            <a *ngIf="valor.id_rol==1" class="nav-link" routerLink="/calendar" tabindex="-1" aria-disabled="true">Calendario</a>
+            <a *ngIf="valor.id_rol==1" class="nav-link" routerLink="/calendar" tabindex="-1" aria-disabled="true">
+              <i class="fa fa-calendar"></i>
+              Calendario
+            </a>
           </li>
           <li class="nav-item">
-            <a *ngIf="valor.id_rol==1" class="nav-link" routerLink="/salas" tabindex="-1" aria-disabled="true">Salas</a>
+            <a *ngIf="valor.id_rol==1" class="nav-link" routerLink="/salas" tabindex="-1" aria-disabled="true">
+              <i class="fa fa-hospital-o"></i>
+              Salas
+            </a>
           </li>
           <li class="nav-item">
-            <a *ngIf="valor.id_rol==1" class="nav-link" routerLink="/personal" tabindex="-1" aria-disabled="true">Personal</a>
+            <a *ngIf="valor.id_rol==1" class="nav-link" routerLink="/personal" tabindex="-1" aria-disabled="true">
+              <i class="fa fa-user-md"></i>
+              Personal
+            </a>
           </li>
           <li class="nav-item">
-            <a *ngIf="valor.id_rol==1" class="nav-link" routerLink="/insumos" tabindex="-1" aria-disabled="true">Insumos</a>
+            <a *ngIf="valor.id_rol==1" class="nav-link" routerLink="/insumos" tabindex="-1" aria-disabled="true">
+              <i class="fa fa-medkit"></i>
+              Insumos
+            </a>
           </li>
           <li class="nav-item">
-            <a *ngIf="valor.id_rol==1" class="nav-link" routerLink="/materiales" tabindex="-1" aria-disabled="true">Materiales</a>
+            <a *ngIf="valor.id_rol==1" class="nav-link" routerLink="/materiales" tabindex="-1" aria-disabled="true">
+              <i class="fa fa-stethoscope">
+                <span class="badge badge-danger">11</span>
+              </i>
+              Materiales
+            </a>
           </li>
 
 
@@ -58,21 +94,47 @@
 
       <div *ngIf="valor.id_rol>0" class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="navbar-brand" >{{valor.name}}</a>
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" style="color: white" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-user-circle"></i>
+              {{valor.name}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" *ngIf="valor.id>0" class="nav-link" routerLink="cerrarCuenta()" >
+                
+                Cerrar Sesión</a>
+                <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li> -->
+
+
+           <li class="nav-item">
+            <a class="navbar-brand" style="color: white">
+              <i class="fa fa-user-circle"></i>
+              {{valor.name}}
+            </a>
             <h4></h4>
           </li>
 
           <li class="nav-item">
-              <a *ngIf="valor.id>0" class="nav-link" routerLink="cerrarCuenta()" >Cerrar Sesión</a>
-          </li>
+              <a *ngIf="valor.id>0" class="nav-link" routerLink="cerrarCuenta()" >
+                <i class="fa fa-users"></i>
+                Cerrar Sesión
+              </a>
+          </li> 
         </ul>
       </div>
 
         <div *ngIf="valor.id_rol==empty" class="navbar-collapse collapse w-100 order-3 dual-collapse2">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" routerLink="/login">Iniciar Sesión</a>
+              <a class="nav-link" routerLink="/login" >
+                <i class="fa fa-sign-in" ></i>
+                Iniciar Sesión
+              </a>
             </li>
           </ul>
         </div>

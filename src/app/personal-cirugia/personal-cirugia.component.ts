@@ -15,19 +15,41 @@ export class PersonalCirugiaComponent implements OnInit {
   public personal_cirugia;
   id: any;
   public estado;
+  datos=[1,2,4];
+
+  n=0
   API_ENDPOINT= 'http://177.222.52.26:8000/api'
 
+  valor=1;
   constructor(private httpClient: HttpClient, private activatedRoute: ActivatedRoute) { 
     this.obtener_personal().subscribe((data) => {
-      console.log(data);
+      console.log(this.datos);
       this.personal=data;
+      for(var i=0;i<this.personal.length;i++){
+        //if(this.datos[i]==this.personal[i]["id"]){
+          for(var c=0;c<this.datos.length;c++){
+            if(this.datos[c]==this.personal[i]["id"]){
+              
+              console.log(            this.datos[c]+"=="+this.personal[i]["id"]            );
+              this.valor=0;
+            }
+            this.personal[i]["estado"]=this.valor+"";
+          }
+          this.valor=1;
+
+          //this.valor[i]=0;
+        //}
+    }
+console.log(this.personal);
     }, error => {
       console.log(error);
     
     });; 
 
+    
+    
     this.obtener_cirugia().subscribe((data) => {
-      console.log(data);
+      //console.log(data);
       this.cirugia=data;
     }, error => {
       console.log(error);
@@ -35,7 +57,7 @@ export class PersonalCirugiaComponent implements OnInit {
     });; 
 
     this.obtener_personal_cirugia().subscribe((data) => {
-      console.log(data);
+      //console.log(data);
       this.personal_cirugia=data;
     }, error => {
       console.log(error);
@@ -45,7 +67,7 @@ export class PersonalCirugiaComponent implements OnInit {
     this.id =this.activatedRoute.snapshot.params['id'];
     if(this.id>0){
       this.estado=0;
-      console.log(this.id);
+      //console.log(this.id);
     }else{
       this.estado=1;
     }

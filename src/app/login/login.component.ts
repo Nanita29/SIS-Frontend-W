@@ -39,7 +39,8 @@ export class LoginComponent implements OnInit {
   ingresarCuenta(){
     this.usersService.ingresar(this.user).subscribe((data) => {
       alert ('Inicio con éxito');
-      console.log(data['access_token']);
+      /* console.log(data['access_token']);
+      console.log(data); */
       this.router.navigate(['/pacientes']);
       localStorage.setItem("token",data['access_token']);
 

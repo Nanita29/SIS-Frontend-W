@@ -91,6 +91,11 @@ export class CalendarComponent {
             center: 'title',
             right: 'month,agendaWeek,agendaDay'
         },
+
+        monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+        monthNamesShort: ['Ene','Febr','Marz','Abr','May','Jun','Jul','Agos','Sept','Oct','Nov','Dic'],
+        dayNames: ['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'],
+        dayNamesShort: ['Lun','Mar','Miér','Jue','Vie','Sáb','Dom'],
         
         buttonText: {
             today: 'Hoy',
