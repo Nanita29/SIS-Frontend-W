@@ -55,7 +55,7 @@ export class NuevasalaComponent implements OnInit {
   ngOnInit() {
   }
 
-  registrarCirugia(){
+  registrarSala(){
     this.salasService.save(this.sala).subscribe((data) => {
       alert (data['message']);
     }, error => {
