@@ -30,12 +30,12 @@
 
           <div class="col" >
             <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">Escribir datos a buscar:</div>
+              
+              <div class="searchbar">
+                <input [(ngModel)]="filtertext"  class="search_input" type="text" name=""  placeholder="Nombre, apellido, teléfono, cargo...">
+                <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
               </div>
-    
-              <input type="text" [(ngModel)]="filtertext" class="form-control" placeholder="Nombre, apellido, teléfono, cargo...">
-            
+              
             </div>
           </div>
 

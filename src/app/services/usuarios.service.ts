@@ -16,7 +16,11 @@ export class UsuariosService {
     const headers = new HttpHeaders( {'Content-Type': 'application/json','X-Requested-With':'XMLHttpRequest', 'Authorization': 'Bearer '+localStorage.getItem("token")});
     console.log(user);
     console.log(headers);
+<<<<<<< HEAD
     return this.httpClient.post(this.API_ENDPOINT + '/auth/signup', user, {headers: headers});
+=======
+    return this.httpClient.post(this.API_ENDPOINT +'/auth/signup', user, {headers: headers});
+>>>>>>> 9bcd052f8393ba1da34c27709d4d18c0ecc97481
   }
 
   ingresar(user: User){

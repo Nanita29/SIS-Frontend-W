@@ -47,10 +47,10 @@ export class RegisterComponent implements OnInit {
       this.estado=0;
       console.log(this.id);
     this.recdat().subscribe((data) => {
-      console.log(data);
-      this.user_e['name']=data[0]['name'];
-      this.user_e['email']=data[0]['email'];
-      this.datitos=data;
+      console.log(data+"hola");
+      this.user_e['name']=data[0][0]['name'];
+      this.user_e['email']=data[0][0]['email'];
+      this.datitos=data[0];
     }, error => {
       console.log(error);
     
@@ -92,7 +92,7 @@ export class RegisterComponent implements OnInit {
      
   }
 
-  ngOnInit() {
+  ngOnInit() { 
   }
 
   registrarUser(){

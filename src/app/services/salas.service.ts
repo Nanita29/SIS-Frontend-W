@@ -15,7 +15,7 @@ export class SalasService {
     const headers = new HttpHeaders( {'Content-Type': 'application/json','X-Requested-With':'XMLHttpRequest', 'Authorization': 'Bearer '+localStorage.getItem("token")});
     console.log(sala);
     console.log(headers);
-    return this.httpClient.post('http://177.222.52.26:8000/api/sala', sala, {headers: headers});
+    return this.httpClient.post(this.API_ENDPOINT + '/sala', sala, {headers: headers});
   }
 
   update(id,sala_e){
