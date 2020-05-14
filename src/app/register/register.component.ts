@@ -97,9 +97,10 @@ export class RegisterComponent implements OnInit {
 
   registrarUser(){
     this.usersService.save(this.user).subscribe((data) => {
-      alert (data['message']);
+        alert(data["message"]);
     }, error => {
-        alert(error.error['message']);
+
+        //alert(error.error['message']);
     });
   } 
   update(){

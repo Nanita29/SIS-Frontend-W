@@ -47,18 +47,14 @@ export class CirugiasComponent implements OnInit {
   constructor(private cirugiasService: CirugiasService, private activatedRoute: ActivatedRoute,private httpClient: HttpClient) {
 
     this.obtener_salas().subscribe((data) => {
-      console.log(data);
-      this.salas=data;
-      console.log(this.salas);
+      this.salas=data[0];
     }, error => {
       console.log(error);
     
     });;  
 
     this.obtener_pacientes().subscribe((data) => {
-      console.log(data);
-      this.pacientes=data;
-      console.log(this.pacientes);
+      this.pacientes=data[0];
     }, error => {
       console.log(error);
     
@@ -67,9 +63,7 @@ export class CirugiasComponent implements OnInit {
     this.id =this.activatedRoute.snapshot.params['id'];
     if(this.id>0){
       this.estado=0;
-      console.log(this.id); 
       this.recdat().subscribe((data) => {
-        console.log(data);
         this.cirugia_e['id_paciente']=data[0]['id_paciente'];
         this.cirugia_e['id_sala']=data[0]['id_sala'];
         this.cirugia_e['fechaIngreso']=data[0]['fechaIngreso'];
@@ -82,7 +76,6 @@ export class CirugiasComponent implements OnInit {
     }
     else{
       this.estado=1;
-      console.log(this.estado);
     }
     
    }
