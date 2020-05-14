@@ -6,7 +6,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
   providedIn: 'root'
 })
 export class CirugiasService {
-  API_ENDPOINT= 'http://177.222.52.26:8000/api'; 
+  API_ENDPOINT= 'http://www.tallerdesis.com:8000/api'; 
 
   constructor(private httpClient: HttpClient) { }
 

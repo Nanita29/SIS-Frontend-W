@@ -10,7 +10,7 @@ import { Insumo } from '../interfaces/insumo';
 export class InsumoComponent implements OnInit {
 
   public insumos;
-  API_ENDPOINT= 'http://177.222.52.26:8000/api'
+  API_ENDPOINT= 'http://www.tallerdesis.com:8000/api'
   insu: Insumo[];
 
   constructor(private httpClient: HttpClient) {

@@ -29,7 +29,7 @@ export class NuevasalaComponent implements OnInit {
   public datitos;
   public route;
   public estado;
-  API_ENDPOINT= 'http://177.222.52.26:8000/api'
+  API_ENDPOINT= 'http://www.tallerdesis.com:8000/api'
 
   constructor(private salasService: SalasService, private activatedRoute: ActivatedRoute,private httpClient: HttpClient) {
     this.id =this.activatedRoute.snapshot.params['id'];

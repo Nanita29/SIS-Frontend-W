@@ -6,7 +6,7 @@ import {User} from '../interfaces/user';
   providedIn: 'root'
 })
 export class UsuariosService {
-  API_ENDPOINT= 'http://177.222.52.26:8000/api'; 
+  API_ENDPOINT= 'http://www.tallerdesis.com:8000/api'; 
   constructor(private httpClient: HttpClient) { }
   get(){
     const headers = new HttpHeaders( {'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("token")});
