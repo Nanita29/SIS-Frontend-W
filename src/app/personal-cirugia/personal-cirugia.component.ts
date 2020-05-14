@@ -13,6 +13,8 @@ export class PersonalCirugiaComponent implements OnInit {
   public personal;
   public cirugia;
   public personal_cirugia;
+  public route;
+  public personal_en;
   id: any;
   public estado;
   datos=[1,2,4];
@@ -22,15 +24,24 @@ export class PersonalCirugiaComponent implements OnInit {
 
   valor=1;
   constructor(private httpClient: HttpClient, private activatedRoute: ActivatedRoute) { 
+    
+    this.obtener_personal_en().subscribe((data) => {
+      //console.log(data);
+      this.cirugia=data;
+    }, error => {
+      console.log(error);
+    
+    });; 
+    
     this.obtener_personal().subscribe((data) => {
-      console.log(this.datos);
+      console.log(this.personal_en);
       this.personal=data;
       for(var i=0;i<this.personal.length;i++){
-        //if(this.datos[i]==this.personal[i]["id"]){
-          for(var c=0;c<this.datos.length;c++){
-            if(this.datos[c]==this.personal[i]["id"]){
+        //if(this.personal_en[i]==this.personal[i]["id"]){
+          for(var c=0;c<this.personal_en.length;c++){
+            if(this.personal_en[c]==this.personal[i]["id"]){
               
-              console.log(            this.datos[c]+"=="+this.personal[i]["id"]            );
+              console.log(            this.personal_en[c]+"=="+this.personal[i]["id"]            );
               this.valor=0;
             }
             this.personal[i]["estado"]=this.valor+"";
@@ -93,25 +104,10 @@ console.log(this.personal);
     return this.httpClient.post(this.API_ENDPOINT + '/personalCirugia/mostrar', {}, {headers: headers});
   }
 
-   /* myFunction() {
-      // Declare variables
-      var input, filter, table, tr, td, i, txtValue;
-      input = document.getElementById("myInput");
-      filter = input.value.toUpperCase();
-      table = document.getElementById("myTable");
-      tr = table.getElementsByTagName("tr");
+  obtener_personal_en(){
+    this.route="/personalCirugia/personalDeUnaCirugia"+this.id+"";
+    const headers = new HttpHeaders( {'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("token")});
+    return this.httpClient.post(this.API_ENDPOINT + this.route, {}, {headers: headers});
 
-      // Loop through all table rows, and hide those who don't match the search query
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-          txtValue = td.textContent || td.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
-        }
-      }
-    } */
+  }
 }

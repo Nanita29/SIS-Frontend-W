@@ -14,7 +14,7 @@ export class CirugiasService {
     const headers = new HttpHeaders( {'Content-Type': 'application/json','X-Requested-With':'XMLHttpRequest', 'Authorization': 'Bearer '+localStorage.getItem("token")});
     console.log(cirugia);
     console.log(headers);
-    return this.httpClient.post('http://177.222.52.26:8000/api/cirugia', cirugia, {headers: headers});
+    return this.httpClient.post(this.API_ENDPOINT + '/cirugia', cirugia, {headers: headers});
   }
 
   update(id, cirugia_e){
