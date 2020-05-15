@@ -142,13 +142,16 @@ console.log(this.personal);
     };
     this.personalcirugiaService.save(datosss).subscribe((data) => {
       alert (data['message']);
+      location.reload();
     }, error => {
         alert(error.error['message']);
     });
+    
   }
   eliminar(id){
     this.personalcirugiaService.eliminar(id).subscribe((data) => {
       alert (data['message']);
+      location.reload();
     }, error => {
         alert(error.error['message']);
     });
