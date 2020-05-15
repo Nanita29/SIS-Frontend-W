@@ -4,12 +4,41 @@
     <div class="card-header">
 
 
-      <div *ngIf="id>0" class="h3">Modificar el personal para la cirugía número:</div>
+      <div *ngIf="id>0" class="h3">Modificar el personal para la cirugía número: {{id}}</div>
       <div *ngIf="estado==1" class="h3">Ingrese los paciente para agregar a la cirugía </div>
       
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0">
+
+       <!--  <div class="form-row">
+
+          <div class="col">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Buscar por:</div>
+              </div>
+              <select class="form-control" id="selected" [(ngModel)]="selected">
+                <option value='nombre'>Nombre</option>
+                <option value='cargo'>Cargo</option>
+              </select>
+    
+            </div>
+          </div> 
+
+          <div class="col" >
+            <div class="input-group mb-2">
+              
+              <div class="searchbar">
+                <input [(ngModel)]="filtertext"  class="search_input" type="text" name=""  placeholder="Nombre, descripción, estado...">
+                <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
+              </div>
+              
+            </div>
+          </div>
+
+        </div> -->
+
         <div class="h6">
 
           <!-- <input type="text" id="myInput" onkeyup="search()" placeholder="Buscar"> -->
@@ -25,21 +54,30 @@
             </thead> 
         
             <tbody>
-              <tr *ngFor="let personal of personal " >
-                <td class="text-center">{{personal.id}}</td> 
-                <th class="text-center">{{personal.nombre}} {{personal.apellidoP}} {{personal.apellidoM}}</th>
+              <tr *ngFor="let personal of personal | paginate: { itemsPerPage: 5, currentPage: pageActual }" >
+               
+                <td class="text-center" >{{personal.id}}</td> 
+                <th class="text-center" >{{personal.nombre}} {{personal.apellidoP}} {{personal.apellidoM}}</th>
                 <th class="text-center">{{personal.rol}}</th>
                 <td class="text-center">
                   <div class="text-center">
-                    <button  *ngIf="personal.estado==0" (click)="quitar()" class="btn btn-info">Eliminar</button>
-                    <button *ngIf="personal.estado>0" (click)="agregar()" class="btn btn-info">Agregar</button>
+                    <button  *ngIf="personal.agregado==0" (click)="eliminar(personal.id_mat)" class="btn btn-info">Eliminar</button>
+                    <button *ngIf="personal.agregado>0" (click)="agregar(personal.id)" class="btn btn-secondary">Agregar</button>
         
                   </div>
                 </td> 
               </tr>
             </tbody>
             
-          </table>
+          </table> 
+
+          <pagination-controls  
+            (pageChange)="pageActual = $event" 
+            responsive="true" 
+            previousLabel="Anterior" 
+            nextLabel="Siguiente">
+          </pagination-controls>
+
         </div>
         
         <footer class="blockquote-footer">Sistema de Cirugías<cite title="Source Title"> -Hospital de Mateo y Narda</cite></footer>

@@ -19,6 +19,7 @@ export class NuevopersonalComponent implements OnInit {
     'direccion':null,
     'telefono':null,
     'id_rol':null,
+    'estado':null,
   };
   personal_e:Personal={
     'id':null, 
@@ -28,6 +29,7 @@ export class NuevopersonalComponent implements OnInit {
     'direccion':null,
     'telefono':null,
     'id_rol':null,
+    'estado':null,
   };
 
   id: any;
@@ -69,6 +71,7 @@ export class NuevopersonalComponent implements OnInit {
       this.personal_e['direccion']=data[0]['direccion'];
       this.personal_e['telefono']=data[0]['telefono'];
       this.personal_e['id_rol']=data[0]['id_rol'];
+      this.personal_e['estado']=data[0]['estado'];
       this.datitos=data;
     }, error => {
       console.log(error);

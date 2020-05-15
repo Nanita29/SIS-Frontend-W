@@ -44,7 +44,7 @@
         <div class="h6">
           
           
-
+          <h5>Personal Activo:</h5>
           <table class = "table table-bordered table-striped">
             <thead class = "thead-dark">
               <tr >
@@ -60,17 +60,45 @@
         
             <tbody>
                <tr *ngFor="let personal of personals | personal: filtertext: selected | paginate: { itemsPerPage: 5, currentPage: pageActual }" >
-                <td class="text-center">{{personal.id}}</td> 
-                <th class="text-center">{{personal.nombre}}</th>
-                <th class="text-center">{{personal.apellidoP}} {{personal.apellidoM}}</th>
-                <th class="text-center">{{personal.direccion}}</th>
-                <th class="text-center">{{personal.telefono}}</th>
-                <th class="text-center">{{personal.rol}}</th>
-                <td class="text-center"><a class="btn btn-info btn-sm" routerLink="/nuevopersonal/{{personal.id}}">Ver-Editar</a></td> 
+                <td class="text-center" *ngIf="personal.estado==0">{{personal.id}}</td> 
+                <th class="text-center" *ngIf="personal.estado==0">{{personal.nombre}}</th>
+                <th class="text-center" *ngIf="personal.estado==0">{{personal.apellidoP}} {{personal.apellidoM}}</th>
+                <th class="text-center" *ngIf="personal.estado==0">{{personal.direccion}}</th>
+                <th class="text-center" *ngIf="personal.estado==0">{{personal.telefono}}</th>
+                <th class="text-center" *ngIf="personal.estado==0">{{personal.rol}}</th>
+                <td class="text-center" *ngIf="personal.estado==0"><a class="btn btn-info btn-sm" routerLink="/nuevopersonal/{{personal.id}}">Ver-Editar</a></td> 
                </tr>
             </tbody>
             
           </table>
+
+          <h5>Personal Inactivo:</h5>
+          <table class = "table table-bordered table-striped">
+            <thead class = "thead-dark">
+              <tr >
+                <th scope="col" class="text-center">Id</th>
+                <th scope="col" class="text-center">Nombre</th>
+                <th scope="col" class="text-center">Apellidos</th>
+                <th scope="col" class="text-center">Dirección</th>
+                <th scope="col" class="text-center">Teléfono</th>
+                <th scope="col" class="text-center">Cargo</th>
+                <th scope="col" class="text-center">Acción</th>
+              </tr>
+            </thead> 
+        
+            <tbody>
+               <tr *ngFor="let personal of personals | personal: filtertext: selected | paginate: { itemsPerPage: 5, currentPage: pageActual }" >
+                <td class="text-center" *ngIf="personal.estado==1">{{personal.id}}</td> 
+                <th class="text-center" *ngIf="personal.estado==1">{{personal.nombre}}</th>
+                <th class="text-center" *ngIf="personal.estado==1">{{personal.apellidoP}} {{personal.apellidoM}}</th>
+                <th class="text-center" *ngIf="personal.estado==1">{{personal.direccion}}</th>
+                <th class="text-center" *ngIf="personal.estado==1">{{personal.telefono}}</th>
+                <th class="text-center" *ngIf="personal.estado==1">{{personal.rol}}</th>
+                <td class="text-center" *ngIf="personal.estado==1"><a class="btn btn-info btn-sm" routerLink="/nuevopersonal/{{personal.id}}">Habilitar/Editar</a></td> 
+               </tr>
+            </tbody>
+            
+          </table> 
           <pagination-controls  
             (pageChange)="pageActual = $event" 
             responsive="true" 

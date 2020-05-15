@@ -18,6 +18,7 @@ export class NuevomaterialComponent implements OnInit {
     'descripcion':null,
     'id_estado':null,
     'cantidad':null,
+    'estadoe':null,
   };
 
   material_e: Material={
@@ -26,6 +27,7 @@ export class NuevomaterialComponent implements OnInit {
     'descripcion':null,
     'id_estado':null,
     'cantidad':null,
+    'estadoe':null,
   };
 
   id: any;
@@ -65,6 +67,7 @@ export class NuevomaterialComponent implements OnInit {
       this.material_e['descripcion']=data[0]['descripcion'];
       this.material_e['id_estado']=data[0]['id_estado'];
       this.material_e['cantidad']=data[0]['cantidad'];
+      this.material_e['estadoe']=data[0]['estadoe'];
       this.datitos=data;
     }, error => {
       console.log(error);

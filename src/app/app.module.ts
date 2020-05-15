@@ -33,6 +33,8 @@ import { SalaPipe } from './salas/sala.pipe';
 import { CirugiaPipe } from './calendar/cirugia.pipe';
 import { PacientePipe } from './pacientes/paciente.pipe';
 
+import { PersonalCirugiaPipe } from './personal-cirugia/personal-cirugia.pipe';
+
 const routes: Route[] = [
   {path: '', component: LoginComponent},
   {path: 'home', component: HomeComponent},
@@ -85,7 +87,8 @@ const routes: Route[] = [
     PersonalPipe,
     SalaPipe,
     CirugiaPipe,
-    PacientePipe
+    PacientePipe,
+    PersonalCirugiaPipe
   ],
   
   imports: [

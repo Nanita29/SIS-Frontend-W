@@ -4,4 +4,5 @@ export interface Material{
     'descripcion': string;
     'id_estado':string; 
     'cantidad': string;
+    'estadoe': string;
 }

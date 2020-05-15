@@ -52,6 +52,30 @@
             </div>
 
           </div>
+
+          <div class="form-row">
+
+            <div class="col" >
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Estado:</div>
+                </div>
+
+                <select *ngIf="id>0" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="insumo_e.estado">
+                  <option selected>Selecciona el estado del insumo:</option>
+                  <option value="0">Habilitado</option>
+                  <option value="1">Deshabilitado</option>
+                </select>
+
+                <select *ngIf="estado==1" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="insumo.estado">
+                  <option selected>Selecciona el estado del insumo:</option>
+                  <option value="0">Habilitado</option>
+                  <option value="1">Deshabilitado</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
           
           <br> 
 

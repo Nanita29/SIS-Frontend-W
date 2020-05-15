@@ -17,6 +17,7 @@ export class NuevoinsumoComponent implements OnInit {
     'nombre':null,
     'descripcion':null,
     'cantidad':null,
+    'estado':null,
   };
 
   insumo_e: Insumo={
@@ -24,6 +25,7 @@ export class NuevoinsumoComponent implements OnInit {
     'nombre':null,
     'descripcion':null,
     'cantidad':null,
+    'estado':null,
   };
 
   id: any;
@@ -46,6 +48,7 @@ export class NuevoinsumoComponent implements OnInit {
       this.insumo_e['nombre']=data[0]['nombre'];
       this.insumo_e['descripcion']=data[0]['descripcion'];
       this.insumo_e['cantidad']=data[0]['cantidad'];
+      this.insumo_e['estado']=data[0]['estado'];
       this.datitos=data;
     }, error => {
       console.log(error);

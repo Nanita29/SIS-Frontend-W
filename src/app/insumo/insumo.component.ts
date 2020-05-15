@@ -19,7 +19,7 @@ export class InsumoComponent implements OnInit {
       console.log(data);
       this.insumos=data;
     }, error => {
-      console.log(error);
+      console.log(error); 
     
     });; 
 

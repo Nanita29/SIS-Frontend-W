@@ -6,4 +6,5 @@ export interface Personal{
     'direccion':string;//end
     'telefono':string;
     'id_rol':string;
+    'estado':string;
 }

@@ -3,4 +3,5 @@ export interface Insumo{
     'nombre': string;
     'descripcion': string;
     'cantidad': string;
+    'estado': string;
 }

@@ -41,7 +41,7 @@
 
         <div class="h6">
           
-          
+          <h5>Material Activo:</h5>
 
           <table class = "table table-bordered table-striped">
             <thead class = "thead-dark">
@@ -57,12 +57,39 @@
         
             <tbody>
               <tr *ngFor="let material of materiales | material: filtertext: selected | paginate: { itemsPerPage: 5, currentPage: pageActual }">
-                <td class="text-center">{{material.id}}</td> 
-                <th class="text-center">{{material.nombre}}</th>
-                <th class="text-center">{{material.descripcion}}</th>
-                <th class="text-center">{{material.cantidad}}</th>
-                <th class="text-center">{{material.estado}}</th>
-                <td class="text-center"><a class="btn btn-info btn-sm" routerLink="/nuevomaterial/{{material.id}}">Ver-Editar</a></td> 
+                <td class="text-center" *ngIf="material.estadoe==0">{{material.id}}</td> 
+                <th class="text-center" *ngIf="material.estadoe==0">{{material.nombre}}</th>
+                <th class="text-center" *ngIf="material.estadoe==0">{{material.descripcion}}</th>
+                <th class="text-center" *ngIf="material.estadoe==0">{{material.cantidad}}</th>
+                <th class="text-center" *ngIf="material.estadoe==0">{{material.estado}}</th>
+                <td class="text-center" *ngIf="material.estadoe==0"><a class="btn btn-info btn-sm" routerLink="/nuevomaterial/{{material.id}}">Ver-Editar</a></td> 
+              </tr>
+            </tbody>
+            
+          </table>
+
+          <h5>Material Inactivo:</h5>
+
+          <table class = "table table-bordered table-striped">
+            <thead class = "thead-dark">
+              <tr >
+                <th scope="col" class="text-center">Id</th>
+                <th scope="col" class="text-center">Nombre</th>
+                <th scope="col" class="text-center">Descripción</th>
+                <th scope="col" class="text-center">Cantidad</th>
+                <th scope="col" class="text-center">Estado</th>
+                <th scope="col" class="text-center">Acción</th>
+              </tr>
+            </thead>
+        
+            <tbody>
+              <tr *ngFor="let material of materiales | material: filtertext: selected | paginate: { itemsPerPage: 5, currentPage: pageActual }">
+                <td class="text-center" *ngIf="material.estadoe==1">{{material.id}}</td> 
+                <th class="text-center" *ngIf="material.estadoe==1">{{material.nombre}}</th>
+                <th class="text-center" *ngIf="material.estadoe==1">{{material.descripcion}}</th>
+                <th class="text-center" *ngIf="material.estadoe==1">{{material.cantidad}}</th>
+                <th class="text-center" *ngIf="material.estadoe==1">{{material.estado}}</th>
+                <td class="text-center" *ngIf="material.estadoe==1"><a class="btn btn-info btn-sm" routerLink="/nuevomaterial/{{material.id}}">Habilitar-Editar</a></td> 
               </tr>
             </tbody>
             

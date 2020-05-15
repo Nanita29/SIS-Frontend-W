@@ -20,7 +20,7 @@
                 <div class="input-group-text">Buscar por:</div>
               </div>
               <select class="form-control" id="selected" [(ngModel)]="selected">
-                <option value='nombre'>Nombre</option>
+                <option value='nombre'>Nombre</option> 
                 <option value='descripcion'>Descripción</option>
               </select>
     
@@ -42,7 +42,7 @@
 
         
         <div class="h6">
-          
+          <h5>Insumos Activos:</h5>
           <table class = "table table-bordered table-striped">
             <thead class = "thead-dark">
               <tr >
@@ -53,14 +53,38 @@
                 <th scope="col" class="text-center">Acción</th>
               </tr>
             </thead>
-        
+         
             <tbody>
                <tr *ngFor="let insumo of insumos | insumo: filtertext: selected | paginate: { itemsPerPage: 5, currentPage: pageActual }">
-                <td class="text-center">{{insumo.id}}</td> 
-                <th class="text-center">{{insumo.nombre}}</th>
-                <th class="text-center">{{insumo.descripcion}}</th>
-                <th class="text-center">{{insumo.cantidad}}</th>
-                <td class="text-center"><a class="btn btn-info btn-sm" routerLink="/nuevoinsumo/{{insumo.id}}">Ver-Editar</a></td> 
+                <td class="text-center" *ngIf="insumo.estado==0">{{insumo.id}}</td> 
+                <th class="text-center" *ngIf="insumo.estado==0">{{insumo.nombre}}</th>
+                <th class="text-center" *ngIf="insumo.estado==0">{{insumo.descripcion}}</th>
+                <th class="text-center" *ngIf="insumo.estado==0">{{insumo.cantidad}}</th>
+                <td class="text-center" *ngIf="insumo.estado==0"><a class="btn btn-info btn-sm" routerLink="/nuevoinsumo/{{insumo.id}}">Ver-Editar</a></td> 
+               </tr>
+            </tbody>
+            
+          </table>
+
+          <h5>Insumos Inactivos:</h5>
+          <table class = "table table-bordered table-striped">
+            <thead class = "thead-dark">
+              <tr >
+                <th scope="col" class="text-center">Id</th>
+                <th scope="col" class="text-center">Nombre</th>
+                <th scope="col" class="text-center">Descripción</th>
+                <th scope="col" class="text-center">Cantidad</th>
+                <th scope="col" class="text-center">Acción</th>
+              </tr>
+            </thead>
+         
+            <tbody>
+               <tr *ngFor="let insumo of insumos | insumo: filtertext: selected | paginate: { itemsPerPage: 5, currentPage: pageActual }">
+                <td class="text-center" *ngIf="insumo.estado==1">{{insumo.id}}</td> 
+                <th class="text-center" *ngIf="insumo.estado==1">{{insumo.nombre}}</th>
+                <th class="text-center" *ngIf="insumo.estado==1">{{insumo.descripcion}}</th>
+                <th class="text-center" *ngIf="insumo.estado==1">{{insumo.cantidad}}</th>
+                <td class="text-center" *ngIf="insumo.estado==1"><a class="btn btn-info btn-sm" routerLink="/nuevoinsumo/{{insumo.id}}">Habilitar-Editar</a></td> 
                </tr>
             </tbody>
             
