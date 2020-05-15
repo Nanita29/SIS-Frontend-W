@@ -15,7 +15,7 @@ import { UsuariosService } from './services/usuarios.service';
 } */
 export class AppComponent implements OnInit {
 
-  title = 'Sistma de Cirugías';
+  title = 'SIS-Frontend-Web';
 
   rol: any;
   nombre: any;
