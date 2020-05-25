@@ -34,6 +34,7 @@ import { CirugiaPipe } from './calendar/cirugia.pipe';
 import { PacientePipe } from './pacientes/paciente.pipe';
 
 import { PersonalCirugiaPipe } from './personal-cirugia/personal-cirugia.pipe';
+import { CirugiaEstadoComponent } from './cirugia-estado/cirugia-estado.component';
 
 const routes: Route[] = [
   {path: '', component: LoginComponent},
@@ -59,7 +60,8 @@ const routes: Route[] = [
   {path: 'nuevomaterial', component: NuevomaterialComponent},
   {path: 'personal_cirugia/:id', component: PersonalCirugiaComponent},
   {path: 'insumo_cirugia/:id', component: InsumoCirugiaComponent},
-  {path: 'material_cirugia/:id', component: MaterialCirugiaComponent}
+  {path: 'material_cirugia/:id', component: MaterialCirugiaComponent},
+  {path: 'cirugia/estado/:id', component: CirugiaEstadoComponent}
 ];
 
 @NgModule({
@@ -88,7 +90,8 @@ const routes: Route[] = [
     SalaPipe,
     CirugiaPipe,
     PacientePipe,
-    PersonalCirugiaPipe
+    PersonalCirugiaPipe,
+    CirugiaEstadoComponent
   ],
   
   imports: [

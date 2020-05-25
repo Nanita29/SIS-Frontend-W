@@ -108,7 +108,7 @@ export class NuevomaterialComponent implements OnInit {
 
   obtener_estado(){
     const headers = new HttpHeaders( {'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("token")});
-    return this.httpClient.post(this.API_ENDPOINT + '/rolPersonal/mostrar', {}, {headers: headers});
+    return this.httpClient.post(this.API_ENDPOINT + '/estado/mostrar', {}, {headers: headers});
 
   }
 

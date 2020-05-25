@@ -42,27 +42,29 @@
           <table class = "table table-bordered table-striped">
             <thead class = "thead-dark">
               <tr>
-                <th scope="col" class="text-center">Id</th>
-                <th scope="col" class="text-center">Paciente</th>
-                <th scope="col" class="text-center">Fecha de Cirugía</th>
-                <th scope="col" class="text-center">Fecha de Cirugía</th>
-                <th scope="col" class="text-center">Detalles</th>
-                <th scope="col" class="text-center">Personal</th>
-                <th scope="col" class="text-center">Insumo</th>
-                <th scope="col" class="text-center">Material</th>
+                <th *ngIf="valor.id_rol==1" scope="col" class="text-center">Id</th>
+                <th *ngIf="valor.id_rol==1" scope="col" class="text-center">Paciente</th>
+                <th *ngIf="valor.id_rol==1" scope="col" class="text-center">Fecha de Cirugía</th>
+                <th *ngIf="valor.id_rol==1" scope="col" class="text-center">Fecha de Cirugía</th>
+                <th *ngIf="valor.id_rol==1" scope="col" class="text-center">Detalles</th>
+                <th *ngIf="valor.id_rol==1" scope="col" class="text-center">Personal</th>
+                <th *ngIf="valor.id_rol==1" scope="col" class="text-center">Insumo</th>
+                <th *ngIf="valor.id_rol==1" scope="col" class="text-center">Material</th>
+                <th *ngIf="valor.id_rol==1" scope="col" class="text-center">Cambiar estado</th>
               </tr>
             </thead>
         
             <tbody>
               <tr *ngFor="let cirugia of cirugias | cirugia: filtertext: selected | paginate: { itemsPerPage: 5, currentPage: pageActual }">
-                <td class="text-center">{{cirugia.id}}</td>
-                <td class="text-center">{{cirugia.id_paciente}}</td>
-                <th class="text-center">{{cirugia.fechaIngreso}}</th>
-                <th class="text-center">{{cirugia.fechaSalida}}</th>
-                <td class="text-center"><a class="btn btn-info btn-sm" routerLink="/cirugias/{{cirugia.id}}">Ver-Editar</a></td>
-                <td class="text-center"><a class="btn btn-info btn-sm" routerLink="/personal_cirugia/{{cirugia.id}}">Agregar-Editar</a></td>
-                <td class="text-center"><a class="btn btn-info btn-sm" routerLink="/insumo_cirugia/{{cirugia.id}}">Agregar-Editar</a></td>
-                <td class="text-center"><a class="btn btn-info btn-sm" routerLink="/material_cirugia/{{cirugia.id}}">Agregar-Editar</a></td>
+                <td *ngIf="valor.id_rol==1" class="text-center">{{cirugia.id}}</td>
+                <td *ngIf="valor.id_rol==1" class="text-center">{{cirugia.id_paciente}}</td>
+                <th *ngIf="valor.id_rol==1" class="text-center">{{cirugia.fechaIngreso}}</th>
+                <th *ngIf="valor.id_rol==1" class="text-center">{{cirugia.fechaSalida}}</th>
+                <td *ngIf="valor.id_rol==1" class="text-center"><a class="btn btn-info btn-sm" routerLink="/cirugias/{{cirugia.id}}">Ver-Editar</a></td>
+                <td *ngIf="valor.id_rol==1" class="text-center"><a class="btn btn-info btn-sm" routerLink="/personal_cirugia/{{cirugia.id}}">Agregar-Editar</a></td>
+                <td *ngIf="valor.id_rol==1" class="text-center"><a class="btn btn-info btn-sm" routerLink="/insumo_cirugia/{{cirugia.id}}">Agregar-Editar</a></td>
+                <td *ngIf="valor.id_rol==1" class="text-center"><a class="btn btn-info btn-sm" routerLink="/material_cirugia/{{cirugia.id}}">Agregar-Editar</a></td>
+                <td *ngIf="valor.id_rol==1" class="text-center"><a class="btn btn-info btn-sm" routerLink="/cirugia/estado/{{cirugia.id}}">Modificar</a></td>
               </tr>
             </tbody>
         
@@ -79,8 +81,8 @@
       </blockquote>
     </div>
   </div>
-
-  <div class="card border-info mb-3">
+ 
+  <div *ngIf="valor.id_rol==1" class="card border-info mb-3">
     <div class="card-header">
       <div class="h3">Mis Calendario</div>
     </div>
@@ -97,6 +99,8 @@
       </blockquote>
     </div>
   </div>
+
+
       
       
 </div >

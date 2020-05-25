@@ -18,13 +18,30 @@ export class CalendarComponent {
   API_ENDPOINT = 'http://www.tallerdesis.com:8000/api'
   cirugia: Cirugia[];
   public fecha;
+  public hora;
   public titulo=[];
   public fechaIn=[];
   public fechaSal=[];
+  public horaIn=[];
+  public horaSal=[];
   public cirugias;
   public eventosData;
+  valor={
+    'id':null,
+    'id_rol':null,
+    'name':null,
+  };
 ;
   constructor(private httpClient: HttpClient) {
+
+    this.obtener_usuario().subscribe((data) => {        
+      this.valor['name']=(data['name']);
+      this.valor['id']=(data['id']);
+      this.valor['id_rol']=(data['id_rol']);
+    }, error => {
+      console.log(error);
+    
+    });; 
 
     
     this.mostrar_cirugias().subscribe((data) => {
@@ -33,12 +50,25 @@ export class CalendarComponent {
      
       for(var i = 0;i<this.cirugias.length;i++) { 
         this.titulo.push(this.cirugias[i]['id']);
+        this.hora = this.cirugias[i]['fechaIngreso'].split("");
+        this.hora = this.hora[11] + this.hora[12] +":"+ this.hora[14] + this.hora[15];
+        this.horaIn.push(this.hora);
+
+        this.hora = this.cirugias[i]['fechaSalida'].split("");
+        this.hora = this.hora[11] + this.hora[12] +":"+ this.hora[14] + this.hora[15];
+        this.horaSal.push(this.hora);
+
         this.fecha = this.cirugias[i]['fechaIngreso'].split("");
-        this.fecha = this.fecha[0] + this.fecha[1] + this.fecha[2] + this.fecha[3] + this.fecha[5] + this.fecha[6] + this.fecha[8] + this.fecha[9];
+        this.fecha = this.fecha[0] + this.fecha[1] + this.fecha[2] + this.fecha[3] +"/"+ this.fecha[5] + 
+          this.fecha[6] +"/"+ this.fecha[8] + this.fecha[9] +" "+ this.fecha[11] + this.fecha[12] +":"+ 
+          this.fecha[14] + this.fecha[15];
         this.fechaIn.push(this.fecha);
 
         this.fecha = this.cirugias[i]['fechaSalida'].split("");
-        this.fecha = this.fecha[0] + this.fecha[1] + this.fecha[2] + this.fecha[3] + this.fecha[5] + this.fecha[6] + this.fecha[8] + this.fecha[9];
+        this.fecha = this.fecha[0] + this.fecha[1] + this.fecha[2] + this.fecha[3] +"/"+ this.fecha[5] + 
+          this.fecha[6] +"/"+ this.fecha[8] + this.fecha[9] +" "+ this.fecha[11] + this.fecha[12] +":"+ 
+          this.fecha[14] + this.fecha[15];
+          
         this.fechaSal.push(this.fecha);
 
       }
@@ -59,7 +89,8 @@ export class CalendarComponent {
     this.eventosData=[
       {
         title: "",
-        start: moment("", "YYYYMMDD"),
+        start: moment("", 'YYYY/MM/DD/ HH:MM'),
+        end: moment("", 'YYYY/MM/DD/ HH:MM'),
         color: '#2CAABE',
         textColor: 'white'
         
@@ -69,11 +100,12 @@ export class CalendarComponent {
     for(var i = 0;i<this.cirugias.length;i++) { 
       this.eventosData.push (
         {
-          "title": "ID: "+this.titulo[i],
+          "title": "Identificación cirugía: "+this.titulo[i] +"\n" + "Hora de inicio: "+ this.horaIn[i] +"\n" + "Hora fin: "+ this.horaSal[i],
           "start": this.fechaIn[i],
           "end": this.fechaSal[i],
           "color": '#2CAABE',
           "textColor": 'white'
+          
         }
       );
     }
@@ -84,8 +116,10 @@ export class CalendarComponent {
         
         selectable: true,
         eventLimit: true,
+        
 
         titleFormat: 'MMMM YYYY',
+        displayEventTime: false,
         header: {
             left: 'prev,next today',
             center: 'title',
@@ -94,8 +128,8 @@ export class CalendarComponent {
 
         monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
         monthNamesShort: ['Ene','Febr','Marz','Abr','May','Jun','Jul','Agos','Sept','Oct','Nov','Dic'],
-        dayNames: ['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'],
-        dayNamesShort: ['Lun','Mar','Miér','Jue','Vie','Sáb','Dom'],
+        dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+        dayNamesShort: ['Dom','Lun','Mar','Miér','Jue','Vie','Sáb'],
         
         buttonText: {
             today: 'Hoy',
@@ -120,6 +154,13 @@ export class CalendarComponent {
         slotLabelInterval: moment.duration('01:00:00'),
         firstDay: 1,
         selectHelper: true,
+
+        eventClick: function (event, jsEvent, view) {
+          //alert("nombre del evento" +event.title );
+          $('#exampleModal').html(event.title);
+          $('#ModalTitle').html(event.title); 
+      },
+        
         
 
 
@@ -132,7 +173,11 @@ export class CalendarComponent {
   mostrar_cirugias() {
     const headers = new HttpHeaders( {'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("token")});
     return this.httpClient.post(this.API_ENDPOINT + '/cirugia/getCirugias', {}, {headers: headers});
+  }
 
+  obtener_usuario(){
+    const headers = new HttpHeaders( {'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("token")});
+    return this.httpClient.post(this.API_ENDPOINT + '/auth/user', {}, {headers: headers});
 
   }
 }

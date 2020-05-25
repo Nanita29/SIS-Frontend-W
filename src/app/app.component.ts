@@ -15,7 +15,7 @@ import { UsuariosService } from './services/usuarios.service';
 } */
 export class AppComponent implements OnInit {
 
-  title = 'SIS-Frontend-Web';
+  title = 'Sistema de ';
 
   rol: any;
   nombre: any;
