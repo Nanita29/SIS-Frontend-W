@@ -10,7 +10,7 @@
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0">
-        <div class="h6">
+        <div class="h6"> 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" for="nombre">Nombre:</span>
@@ -56,18 +56,27 @@
             <input [(ngModel)]="user.telefono" type="number" class="form-control" id="telefono" > 
           </div> -->
     
-          <!-- <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <label class="input-group-text" for="inputGroupSelect01">Rol</label>
-            </div>
-            <select [(ngModel)]="user.id_rol" class="custom-select" id="id_rol">
-              <option selected>Elija el rol que cumplirá...</option>
-              <option value="1">Administrador</option>
-              <option value="2">Doctor en Jefe</option>
-              <option value="3">Encargado de Materiales</option>
-              <option value="4">Paciente</option>
+          <div *ngIf="valor.id_rol==1"> 
+            <select *ngIf="id>0" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="user_e.id_rol">
+              <option selected>Selecciona el rol del usuario:</option>
+              <option  *ngFor="let rol of roles" value={{rol.id}}>{{rol.nombre}}</option>
             </select>
-          </div> -->
+            <select *ngIf="estado==1" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="user.id_rol">
+              <option selected>Selecciona el rol del usuario:</option>
+              <option  *ngFor="let rol of roles" value={{rol.id}}>{{rol.nombre}}</option>
+            </select>
+          </div>
+
+          <div *ngIf="valor.id_rol==2"> 
+            <select *ngIf="id>0" disabled="disabled" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="user_e.id_rol">
+              <option selected>Selecciona el rol del usuario:</option>
+              <option  *ngFor="let rol of roles" value={{rol.id}}>{{rol.nombre}}</option>
+            </select>
+            <select *ngIf="estado==1" disabled="disabled" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="user_e.id_rol">
+              <option selected>Selecciona el rol del usuario:</option>
+              <option  *ngFor="let rol of roles" value={{rol.id}}>{{rol.nombre}}</option>
+            </select>
+          </div>
     
           <div *ngIf="estado==1" class="input-group mb-3">
             <div  class="input-group-prepend">

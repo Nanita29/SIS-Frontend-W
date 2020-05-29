@@ -1,13 +1,168 @@
 
 <div class="mx-auto" style="width: 1400px;">
-  <div class="card border-info mb-3">
+  <div class="h3">
+    <a class="btn btn-info btn-sm" routerLink="/register">Nuevo Usuario</a>
+  </div>
+  <div *ngIf="valor.id_rol==1" class="card border-info mb-3">
+    
     <div class="card-header">
-      <div class="h3">Mis Pacientes</div>
+      <div *ngIf="valor.id_rol==1" class="h3">Doctores</div>
       
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0">
-        <div class="h3">
+        
+
+        <div class="form-row">
+
+          <div class="col">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Buscar por:</div>
+              </div>
+              <select class="form-control" id="selected" [(ngModel)]="selected1">
+                <option value='name'>Nombre</option>
+                <option value='email'>Correo electrónico</option>
+              </select>
+    
+            </div>
+          </div> 
+
+          <div class="col" >
+            <div class="input-group mb-2">
+              
+              <div class="searchbar">
+                <input [(ngModel)]="filtertext1"  class="search_input" type="text" name=""  placeholder="Nombre, correo electrónico...">
+                <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
+              </div>
+              
+            </div>
+          </div>
+
+        </div>
+
+        <div class="h6">
+          
+          
+
+          <table class = "table table-bordered table-striped">
+            <thead class = "thead-dark">
+              <tr >
+                <th scope="col" class="text-center">Id</th>
+                <th scope="col" class="text-center">Nombre</th>
+                <th scope="col" class="text-center">Correo electrónico</th>
+                <th scope="col" class="text-center">Acción</th>
+              </tr>
+            </thead>
+         
+            <tbody>
+               <tr *ngFor="let doctor of doctores | paciente: filtertext1: selected1 | paginate: { itemsPerPage: 5, currentPage: pageActual }">
+                <td class="text-center">{{doctor.id}}</td> 
+                <th class="text-center">{{doctor.name}}</th>
+                <th class="text-center">{{doctor.email}}</th>
+                <td class="text-center"><a class="btn btn-info btn-sm" routerLink="/register/{{doctor.id}}">Ver-Editar</a></td> 
+               </tr>
+            </tbody>
+            
+          </table>
+          <pagination-controls  
+            (pageChange)="pageActual = $event" 
+            responsive="true" 
+            previousLabel="Anterior" 
+            nextLabel="Siguiente">
+          </pagination-controls>
+        </div>
+        
+        <footer class="blockquote-footer">Sistema de Cirugías<cite title="Source Title"> -Hospital de Mateo y Narda</cite></footer>
+      </blockquote>
+    </div>
+  </div>
+
+  <div *ngIf="valor.id_rol==1" class="card border-info mb-3">
+    
+    <div class="card-header">
+      <div *ngIf="valor.id_rol==1" class="h3">Encargados de Materiales</div>
+      
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        
+
+        <div class="form-row">
+
+          <div class="col">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Buscar por:</div>
+              </div>
+              <select class="form-control" id="selected" [(ngModel)]="selected2">
+                <option value='name'>Nombre</option>
+                <option value='email'>Correo electrónico</option>
+              </select>
+    
+            </div>
+          </div> 
+
+          <div class="col" >
+            <div class="input-group mb-2">
+              
+              <div class="searchbar">
+                <input [(ngModel)]="filtertext2"  class="search_input" type="text" name=""  placeholder="Nombre, correo electrónico...">
+                <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
+              </div>
+              
+            </div>
+          </div>
+
+        </div>
+
+        <div class="h6">
+          
+          
+
+          <table class = "table table-bordered table-striped">
+            <thead class = "thead-dark">
+              <tr >
+                <th scope="col" class="text-center">Id</th>
+                <th scope="col" class="text-center">Nombre</th>
+                <th scope="col" class="text-center">Correo electrónico</th>
+                <th scope="col" class="text-center">Acción</th>
+              </tr>
+            </thead>
+         
+            <tbody>
+               <tr *ngFor="let encargado of encargados | paciente: filtertext2: selected2 | paginate: { itemsPerPage: 5, currentPage: pageActual }">
+                <td class="text-center">{{encargado.id}}</td> 
+                <th class="text-center">{{encargado.name}}</th>
+                <th class="text-center">{{encargado.email}}</th>
+                <td class="text-center"><a class="btn btn-info btn-sm" routerLink="/register/{{encargado.id}}">Ver-Editar</a></td> 
+               </tr>
+            </tbody>
+            
+          </table>
+          <pagination-controls  
+            (pageChange)="pageActual = $event" 
+            responsive="true" 
+            previousLabel="Anterior" 
+            nextLabel="Siguiente">
+          </pagination-controls>
+        </div>
+        
+        <footer class="blockquote-footer">Sistema de Cirugías<cite title="Source Title"> -Hospital de Mateo y Narda</cite></footer>
+      </blockquote>
+    </div>
+  </div>
+
+
+  <div *ngIf="valor.id_rol==1  || valor.id_rol==2" class="card border-info mb-3">
+    <div class="card-header">
+      <div *ngIf="valor.id_rol==2" class="h3">Mis Pacientes</div>
+      <div *ngIf="valor.id_rol==1" class="h3">Pacientes</div>
+      
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <div *ngIf="valor.id_rol==2" class="h3">
           <a class="btn btn-info btn-sm" routerLink="/register">Nuevo Paciente</a>
         </div>
 

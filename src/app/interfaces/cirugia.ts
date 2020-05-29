@@ -6,5 +6,6 @@ export interface Cirugia{
     'fechaSalida':string;//end
     'fechaInternacion':string;
     'fechaInternacion_salida':string;
+    'id_proceso':string; 
     'email_notif':string;
 }

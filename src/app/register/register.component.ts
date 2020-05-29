@@ -37,12 +37,27 @@ export class RegisterComponent implements OnInit {
   public datitos;
   public route;
   public estado;
+  public roles;
+  valor={
+    'id':null,
+    'id_rol':null,
+    'name':null,
+  };
+
   API_ENDPOINT= 'http://www.tallerdesis.com:8000/api'
 
   constructor(private usersService: UsuariosService, private activatedRoute: ActivatedRoute,private httpClient: HttpClient) { 
 
 
     this.id =this.activatedRoute.snapshot.params['id'];
+
+    this.obtener_roles().subscribe((data) => {
+      this.roles=data;
+    }, error => {
+      console.log(error);
+    
+    });; 
+
     if(this.id>0){
       this.estado=0;
       console.log(this.id);
@@ -58,6 +73,15 @@ export class RegisterComponent implements OnInit {
     }else{
       this.estado=1;
     }
+
+    this.obtener_usuario().subscribe((data) => {        
+      this.valor['name']=(data['name']);
+      this.valor['id']=(data['id']);
+      this.valor['id_rol']=(data['id_rol']);
+    }, error => {
+      console.log(error);
+    
+    });; 
     
 
     /* this.id = this.activatedRoute.snapshot.params['id'];
@@ -110,12 +134,24 @@ export class RegisterComponent implements OnInit {
         alert(error.error['message']);
     });
   }
-
+ 
   
   recdat(){
     this.route="/user/"+this.id+"";
     const headers = new HttpHeaders( {'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("token")});
     return this.httpClient.post(this.API_ENDPOINT + this.route, {}, {headers: headers});
+
+  }
+
+  obtener_usuario(){
+    const headers = new HttpHeaders( {'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("token")});
+    return this.httpClient.post(this.API_ENDPOINT + '/auth/user', {}, {headers: headers});
+
+  }
+
+  obtener_roles(){
+    const headers = new HttpHeaders( {'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("token")});
+    return this.httpClient.post(this.API_ENDPOINT + '/rol/mostrar', {}, {headers: headers});
 
   }
 

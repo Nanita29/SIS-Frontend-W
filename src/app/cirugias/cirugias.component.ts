@@ -20,6 +20,7 @@ export class CirugiasComponent implements OnInit {
     'fechaSalida':null,
     'fechaInternacion':null,
     'fechaInternacion_salida':null,
+    'id_proceso':null,
     'email_notif':null,
   };
 
@@ -31,7 +32,14 @@ export class CirugiasComponent implements OnInit {
     'fechaSalida':null,
     'fechaInternacion':null,
     'fechaInternacion_salida':null,
+    'id_proceso':null,
     'email_notif':null,
+  };
+
+  valor={
+    'id':null,
+    'id_rol':null,
+    'name':null,
   };
 
   id: any;
@@ -41,10 +49,20 @@ export class CirugiasComponent implements OnInit {
   public route;
   public estado=0;
   public salas;
+  public procesos;
   public pacientes;
   API_ENDPOINT= 'http://www.tallerdesis.com:8000/api'
 
   constructor(private cirugiasService: CirugiasService, private activatedRoute: ActivatedRoute,private httpClient: HttpClient) {
+
+    this.obtener_usuario().subscribe((data) => {        
+      this.valor['name']=(data['name']);
+      this.valor['id']=(data['id']);
+      this.valor['id_rol']=(data['id_rol']);
+    }, error => {
+      console.log(error);
+    
+    });; 
 
     this.obtener_salas().subscribe((data) => {
       this.salas=data[0];
@@ -60,6 +78,13 @@ export class CirugiasComponent implements OnInit {
     
     });;  
 
+    this.obtener_proceso().subscribe((data) => {
+      this.procesos=data;
+    }, error => {
+      console.log(error);
+    
+    });; 
+
     this.id =this.activatedRoute.snapshot.params['id'];
     if(this.id>0){
       this.estado=0;
@@ -68,7 +93,8 @@ export class CirugiasComponent implements OnInit {
         this.cirugia_e['id_sala']=data[0]['id_sala'];
         this.cirugia_e['fechaIngreso']=data[0]['fechaIngreso'];
         this.cirugia_e['fechaSalida']=data[0]['fechaSalida'];
-        this.datitos=data;
+        this.cirugia_e['id_proceso']=data[0]['id_proceso'];
+        this.datitos=data; 
       }, error => {
         console.log(error);
     
@@ -84,7 +110,6 @@ export class CirugiasComponent implements OnInit {
   } 
 
   registrarCirugia(){
-    console.log(this.cirugia+"asd");
     this.cirugiasService.save(this.cirugia).subscribe((data) => {
       alert (data['message']);
     }, error => {
@@ -117,6 +142,18 @@ export class CirugiasComponent implements OnInit {
   obtener_pacientes(){
     const headers = new HttpHeaders( {'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("token")});
     return this.httpClient.post(this.API_ENDPOINT + '/userCreator', {}, {headers: headers});
+
+  }
+
+  obtener_proceso(){
+    const headers = new HttpHeaders( {'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("token")});
+    return this.httpClient.post(this.API_ENDPOINT + '/proceso/mostrar', {}, {headers: headers});
+
+  }
+
+  obtener_usuario(){
+    const headers = new HttpHeaders( {'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("token")});
+    return this.httpClient.post(this.API_ENDPOINT + '/auth/user', {}, {headers: headers});
 
   }
 

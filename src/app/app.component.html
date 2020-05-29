@@ -21,7 +21,7 @@
             <a *ngIf="valor.id_rol==2" class="nav-link" routerLink="/register" tabindex="-1" aria-disabled="true">Nuevo Paciente</a>
           </li> -->
           <li class="nav-item">
-            <a *ngIf="valor.id_rol==2" class="nav-link" routerLink="/pacientes" tabindex="-1" aria-disabled="true">
+            <a *ngIf="valor.id_rol==2" class="nav-link" routerLink="/usuarios" tabindex="-1" aria-disabled="true">
               <i class="fa fa-users"></i>
               Mis Pacientes
             </a>
@@ -50,9 +50,9 @@
           <!--PANTALLAS DE ADMINISTRADOR ROL 1-->
 
           <li class="nav-item">
-            <a *ngIf="valor.id_rol==1" class="nav-link" routerLink="/pacientes" tabindex="-1" aria-disabled="true">
+            <a *ngIf="valor.id_rol==1" class="nav-link" routerLink="/usuarios" tabindex="-1" aria-disabled="true">
               <i class="fa fa-users"></i>
-              Pacientes
+              Usuarios
             </a>
           </li>
           <li class="nav-item">
@@ -85,6 +85,15 @@
                 <span class="badge badge-danger">11</span>
               </i>
               Materiales
+            </a>
+          </li>
+
+          <!--PANTALLAS DE ASISTENTE 6-->
+
+          <li class="nav-item">
+            <a *ngIf="valor.id_rol==2" class="nav-link" routerLink="/calendar" tabindex="-1" aria-disabled="true">
+              <i class="fa fa-users"></i>
+              Cirugías
             </a>
           </li>
 

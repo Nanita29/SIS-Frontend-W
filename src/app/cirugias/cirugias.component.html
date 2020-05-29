@@ -19,14 +19,25 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text">Paciente</div>
                 </div>
-                <select *ngIf="id>0" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="cirugia_e.id_paciente">
-                  <option selected>Seleccione a su paciente:</option>
-                  <option  *ngFor="let pacientes of pacientes" value={{pacientes.id}}>{{pacientes.name}}</option>
-                </select>
-                <select *ngIf="estado==1" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="cirugia.id_paciente">
-                  <option selected>Seleccione a su paciente:</option>
-                  <option  *ngFor="let pacientes of pacientes" value={{pacientes.id}}>{{pacientes.name}}</option>
-                </select>
+
+                <div *ngIf="valor.id_rol==1 || valor.id_rol==2"> 
+                  <select *ngIf="id>0" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="cirugia_e.id_paciente">
+                    <option selected>Seleccione a su paciente:</option>
+                    <option  *ngFor="let pacientes of pacientes" value={{pacientes.id}}>{{pacientes.name}}</option>
+                  </select>
+                  <select *ngIf="estado==1" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="cirugia.id_paciente">
+                    <option selected>Seleccione a su paciente:</option>
+                    <option  *ngFor="let pacientes of pacientes" value={{pacientes.id}}>{{pacientes.name}}</option>
+                  </select>
+                </div>
+
+                <div *ngIf="valor.id_rol==6"> 
+                  <select *ngIf="id>0" disabled="disabled" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="cirugia_e.id_paciente">
+                    <option selected>Seleccione a su paciente:</option>
+                    <option  *ngFor="let pacientes of pacientes" value={{pacientes.id}}>{{pacientes.name}}</option>
+                  </select>
+                </div>
+                
               </div>
             </div> 
 
@@ -36,15 +47,24 @@
                   <div class="input-group-text">Sala de cirugía</div>
                 </div>
 
-                <select *ngIf="id>0" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="cirugia_e.id_sala">
-                  <option selected>Selecciona la sala que deseas reservar:</option>
-                  <option  *ngFor="let salas of salas" value={{salas.id}}>{{salas.nombre}}</option>
-                </select>
+                <div *ngIf="valor.id_rol==1 || valor.id_rol==2"> 
+                  <select *ngIf="id>0" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="cirugia_e.id_sala">
+                    <option selected>Selecciona la sala que deseas reservar:</option>
+                    <option  *ngFor="let salas of salas" value={{salas.id}}>{{salas.nombre}}</option>
+                  </select>
+                  <select *ngIf="estado==1" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="cirugia.id_sala">
+                    <option selected>Selecciona la sala que deseas reservar:</option>
+                    <option  *ngFor="let salas of salas" value={{salas.id}}>{{salas.nombre}}</option>
+                  </select>
+                </div>
 
-                <select *ngIf="estado==1" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="cirugia.id_sala">
-                  <option selected>Selecciona la sala que deseas reservar:</option>
-                  <option  *ngFor="let salas of salas" value={{salas.id}}>{{salas.nombre}}</option>
-                </select>
+                <div *ngIf="valor.id_rol==6"> 
+                  <select *ngIf="id>0" disabled="disabled" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="cirugia_e.id_sala">
+                    <option selected>Selecciona la sala que deseas reservar:</option>
+                    <option  *ngFor="let salas of salas" value={{salas.id}}>{{salas.nombre}}</option>
+                  </select>
+                </div>
+                
               </div>
             </div>
 
@@ -58,9 +78,17 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text">Fecha y hora de la cirugía</div>
                 </div>
-                <input *ngIf="id>0" type="datetime-local" class="form-control" id="inlineFormInputGroup" [(ngModel)]="cirugia_e.fechaIngreso">
-                <input *ngIf="estado==1" type="datetime-local" class="form-control" id="inlineFormInputGroup" [(ngModel)]="cirugia.fechaIngreso">
-              </div>
+
+                <div *ngIf="valor.id_rol==1 || valor.id_rol==2"> 
+                  <input *ngIf="id>0" get="datetime-local" class="form-control" id="inlineFormInputGroup" [(ngModel)]="cirugia_e.fechaIngreso">
+                  <input *ngIf="estado==1" type="datetime-local" class="form-control" id="inlineFormInputGroup" [(ngModel)]="cirugia.fechaIngreso">
+                </div>
+
+                <div *ngIf="valor.id_rol==6"> 
+                  <input *ngIf="id>0" get="datetime-local" disabled="disabled" class="form-control" id="inlineFormInputGroup" [(ngModel)]="cirugia_e.fechaIngreso">
+                </div>
+
+                </div>
             </div>
 
             <div class="col">
@@ -68,21 +96,51 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text">Fecha y hora de fin de la cirugía</div>
                 </div>
-                <input *ngIf="id>0" type="datetime-local" class="form-control" id="inlineFormInputGroup" [(ngModel)]="cirugia_e.fechaSalida">
-                <input *ngIf="estado==1" type="datetime-local" class="form-control" id="inlineFormInputGroup" [(ngModel)]="cirugia.fechaSalida">
+                
+                <div *ngIf="valor.id_rol==1 || valor.id_rol==2"> 
+                  <input *ngIf="id>0" get="datetime-local"  class="form-control" id="inlineFormInputGroup" [(ngModel)]="cirugia_e.fechaSalida">
+                  <input *ngIf="estado==1" type="datetime-local" class="form-control" id="inlineFormInputGroup" [(ngModel)]="cirugia.fechaSalida">
+                </div>
+
+                <div *ngIf="valor.id_rol==6"> 
+                  <input *ngIf="id>0" get="datetime-local" disabled="disabled" class="form-control" id="inlineFormInputGroup" [(ngModel)]="cirugia_e.fechaSalida">
+                </div>
+
               </div>
             </div>
 
           </div>
           <h6>Tomar en cuenta que los horarios de salida serán aproximados, posteriormente se podrán editar en caso de inconvenientes</h6>
           <br> 
+          
+        <div *ngIf="id>0">
+          <h5>Proceso de la cirugía:</h5>
+          <div class="form-row">
 
+            <div class="col">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Proceso</div>
+                </div>
+
+                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="cirugia_e.id_proceso">
+                    <option selected>Seleccione el estado de cirugía:</option>
+                    <option  *ngFor="let proceso of procesos" value={{proceso.id}}>{{proceso.nombre}}</option>
+                  </select>
+                
+              </div>
+            </div> 
+
+          </div>
+        </div>
+        <br> 
           <div class="text-center">
             <button  *ngIf="id>0" (click)="update()" class="btn btn-info">Guardar</button>
             <button *ngIf="estado==1" (click)="registrarCirugia()" class="btn btn-info">Registrar</button>
 
           </div>
           <br>
+          
         </div>
         
         <footer class="blockquote-footer">Sistema de Cirugías<cite title="Source Title"> -Hospital de Mateo y Narda</cite></footer>
