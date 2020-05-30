@@ -1,4 +1,16 @@
 <div class="mx-auto" style="width: 1200px;">
+  <div *ngIf="mensaje=='Exito'">
+    <div class="alert alert-success" role="alert">
+    <strong>¡Su solicitud se ha completado con éxito!</strong>
+    </div>
+  </div>
+
+  <div *ngIf="mensaje=='fallo'">
+    <div class="alert alert-danger" role="alert">
+    <strong>¡Ha ocurrido un error!</strong> {{errores}}
+    </div>
+  </div>
+  
   <div class="card">
     <div class="card-header">
 

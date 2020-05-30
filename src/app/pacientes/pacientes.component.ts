@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { User } from '../interfaces/user';
+import{UsuariosService} from '../services/usuarios.service';
 
 
 @Component({
@@ -19,9 +20,13 @@ valor={
   'id_rol':null,
   'name':null,
 };
+public exito="";
+public error="";
+public mensaje="";
+  public errores="";
   API_ENDPOINT= 'http://www.tallerdesis.com:8000/api'
   user: User[];
-  constructor(private httpClient: HttpClient) {
+  constructor(private usersService: UsuariosService, private httpClient: HttpClient) {
 
     this.obtener_usuario().subscribe((data) => {        
       this.valor['name']=(data['name']);
@@ -83,6 +88,17 @@ valor={
     const headers = new HttpHeaders( {'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("token")});
     return this.httpClient.post(this.API_ENDPOINT + '/auth/user', {}, {headers: headers});
 
+  }
+
+  Restaurar(id){
+    this.usersService.restaurar(id).subscribe((data) => {
+      this.mensaje=data["message"];
+        this.errores=data["errores"];
+      this.exito=data["message"];
+    }, error => {
+        alert(error.error['message']);
+        this.error=error["message"];
+    });
   }
 
   

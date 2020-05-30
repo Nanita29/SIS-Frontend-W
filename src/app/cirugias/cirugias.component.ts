@@ -51,6 +51,8 @@ export class CirugiasComponent implements OnInit {
   public salas;
   public procesos;
   public pacientes;
+  public mensaje="";
+  public errores="";
   API_ENDPOINT= 'http://www.tallerdesis.com:8000/api'
 
   constructor(private cirugiasService: CirugiasService, private activatedRoute: ActivatedRoute,private httpClient: HttpClient) {
@@ -111,7 +113,8 @@ export class CirugiasComponent implements OnInit {
 
   registrarCirugia(){
     this.cirugiasService.save(this.cirugia).subscribe((data) => {
-      alert (data['message']);
+      this.mensaje=data["message"];
+        this.errores=data["errores"];
     }, error => {
         alert(error.error['message']);
     });
@@ -119,7 +122,8 @@ export class CirugiasComponent implements OnInit {
 
   update(){
     this.cirugiasService.update(this.id,this.cirugia_e).subscribe((data) => {
-      alert (data['message']);
+      this.mensaje=data["message"];
+        this.errores=data["errores"];
     }, error => {
         alert(error.error['message']);
     });

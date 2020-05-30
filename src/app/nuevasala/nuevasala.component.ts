@@ -29,6 +29,8 @@ export class NuevasalaComponent implements OnInit {
   public datitos;
   public route;
   public estado;
+  public mensaje="";
+  public errores="";
   API_ENDPOINT= 'http://www.tallerdesis.com:8000/api'
 
   constructor(private salasService: SalasService, private activatedRoute: ActivatedRoute,private httpClient: HttpClient) {
@@ -57,7 +59,8 @@ export class NuevasalaComponent implements OnInit {
 
   registrarSala(){
     this.salasService.save(this.sala).subscribe((data) => {
-      alert (data['message']);
+      this.mensaje=data["message"];
+        this.errores=data["errores"];
     }, error => {
         alert(error.error['message']);
     });
@@ -65,7 +68,8 @@ export class NuevasalaComponent implements OnInit {
 
   update(){
     this.salasService.update(this.id,this.sala_e).subscribe((data) => {
-      alert (data['message']);
+      this.mensaje=data["message"];
+        this.errores=data["errores"];
     }, error => {
         alert(error.error['message']);
     });

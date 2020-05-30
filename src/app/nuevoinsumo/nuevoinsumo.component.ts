@@ -35,6 +35,8 @@ export class NuevoinsumoComponent implements OnInit {
   public route;
   public valor;
   public estado;
+  public mensaje="";
+  public errores="";
   API_ENDPOINT= 'http://www.tallerdesis.com:8000/api'
 
   constructor(private insumoService: InsumoService, private activatedRoute: ActivatedRoute,private httpClient: HttpClient) { 
@@ -64,7 +66,8 @@ export class NuevoinsumoComponent implements OnInit {
 
   registrar_insumo(){
     this.insumoService.save(this.insumo).subscribe((data) => {
-      alert (data['message']);
+      this.mensaje=data["message"];
+        this.errores=data["errores"];
     }, error => {
         alert(error.error['message']);
     });
@@ -72,7 +75,8 @@ export class NuevoinsumoComponent implements OnInit {
 
   update(){
     this.insumoService.update(this.id,this.insumo_e).subscribe((data) => {
-      alert (data['message']);
+      this.mensaje=data["message"];
+        this.errores=data["errores"];
     }, error => {
         alert(error.error['message']);
     });

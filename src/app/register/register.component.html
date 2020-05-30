@@ -1,7 +1,20 @@
-
 <div class="mx-auto" style="width: 1200px;">
+  
+    <div *ngIf="mensaje=='Exito'">
+      <div class="alert alert-success" role="alert">
+      <strong>¡Su solicitud se ha completado con éxito!</strong>
+      </div>
+    </div>
+
+    <div *ngIf="mensaje=='fallo'">
+      <div class="alert alert-danger" role="alert">
+      <strong>¡Ha ocurrido un error!</strong> {{errores}}
+      </div>
+    </div>
+
+
   <div class="card">
-    <div class="card-header">
+    <div class="card-header" > 
 
 
       <div *ngIf="id>0" class="h3">Modificar los datos:</div>
@@ -10,94 +23,198 @@
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0">
-        <div class="h6"> 
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" for="nombre">Nombre:</span>
-            </div>
-            <input *ngIf="id>0" [(ngModel)]="user_e.name" type="text" class="form-control" id="name">  
-            <input *ngIf="estado==1" [(ngModel)]="user.name" type="text" class="form-control" id="name">  
-          </div>
-    
-          <div  class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" for="email">Correo Electrónico:</span>
-            </div>
-            <input *ngIf="id>0" [(ngModel)]="user_e.email" type="email" class="form-control" id="email"> 
-            <input *ngIf="estado==1" [(ngModel)]="user.email" type="email" class="form-control" id="email"> 
-          </div>
-    
-          
-          <!-- <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" for="nacimiento">Fecha de nacimiento:</span>
-            </div>
-            <input [(ngModel)]="user.nacimiento" type="date" class="form-control" id="nacimiento"> 
-          </div>
-    
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" for="direccion">Dirección de domicilio:</span>
-            </div>
-            <input [(ngModel)]="user.direccion" type="text" class="form-control" id="direccion"> 
-          </div>
-    
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" for="celular">Celular:</span>
-            </div>
-            <input [(ngModel)]="user.celular" type="number" class="form-control" id="celular"> 
-          </div>
-    
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" for="telefono">Teléfono:</span>
-            </div>
-            <input [(ngModel)]="user.telefono" type="number" class="form-control" id="telefono" > 
-          </div> -->
-    
-          <div *ngIf="valor.id_rol==1"> 
-            <select *ngIf="id>0" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="user_e.id_rol">
-              <option selected>Selecciona el rol del usuario:</option>
-              <option  *ngFor="let rol of roles" value={{rol.id}}>{{rol.nombre}}</option>
-            </select>
-            <select *ngIf="estado==1" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="user.id_rol">
-              <option selected>Selecciona el rol del usuario:</option>
-              <option  *ngFor="let rol of roles" value={{rol.id}}>{{rol.nombre}}</option>
-            </select>
+        <div class="h6">          
+          <div class="form-row">
+
+            <div class="col">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Nombre:</div>
+                </div>
+                <input *ngIf="id>0" [(ngModel)]="user_e.name" type="text" class="form-control"> 
+                <input *ngIf="estado==1" [(ngModel)]="user.name" type="text" class="form-control">  
+              </div>
+            </div> 
+            <div class="col">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Apellido Paterno:</div>
+                </div>
+                <input *ngIf="id>0" [(ngModel)]="user_e.apaterno" type="text" class="form-control"> 
+                <input *ngIf="estado==1" [(ngModel)]="user.apaterno" type="text" class="form-control">  
+              </div>
+            </div> 
+
           </div>
 
-          <div *ngIf="valor.id_rol==2"> 
-            <select *ngIf="id>0" disabled="disabled" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="user_e.id_rol">
-              <option selected>Selecciona el rol del usuario:</option>
-              <option  *ngFor="let rol of roles" value={{rol.id}}>{{rol.nombre}}</option>
-            </select>
-            <select *ngIf="estado==1" disabled="disabled" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="user_e.id_rol">
-              <option selected>Selecciona el rol del usuario:</option>
-              <option  *ngFor="let rol of roles" value={{rol.id}}>{{rol.nombre}}</option>
-            </select>
+         
+          <div class="form-row">
+
+            <div class="col">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Apellido Materno:</div>
+                </div>
+                <input *ngIf="id>0" [(ngModel)]="user_e.amaterno" type="text" class="form-control"> 
+                <input *ngIf="estado==1" [(ngModel)]="user.amaterno" type="text" class="form-control">  
+              </div>
+            </div> 
+
+            <div class="col">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Carnet de Identidad:</div>
+                </div>
+                <input *ngIf="id>0" [(ngModel)]="user_e.carnet" type="text" class="form-control"> 
+                <input *ngIf="estado==1" [(ngModel)]="user.carnet" type="text" class="form-control">  
+              </div>
+            </div> 
+
           </div>
-    
-          <div *ngIf="estado==1" class="input-group mb-3">
-            <div  class="input-group-prepend">
-              <span class="input-group-text" for="password">Contraseña:</span>
+
+          <div class="form-row">
+
+            <div class="col">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Celular:</div>
+                </div>
+                <input *ngIf="id>0" [(ngModel)]="user_e.celular" type="number" min="0" class="form-control"> 
+                <input *ngIf="estado==1" [(ngModel)]="user.celular" type="number" min="0" class="form-control">  
+              </div>
+            </div> 
+
+            <div class="col">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Teléfono:</div>
+                </div>
+                <input *ngIf="id>0" [(ngModel)]="user_e.telefono" type="number" min="0" class="form-control"> 
+                <input *ngIf="estado==1" [(ngModel)]="user.telefono" type="number" min="0" class="form-control">  
+              </div>
+            </div> 
+
+          </div>
+
+          <div class="form-row">
+
+            <div class="col">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Fecha de nacimiento</div>
+                </div>
+
+                  <input *ngIf="id>0" get="date" class="form-control" id="inlineFormInputGroup" [(ngModel)]="user_e.fecha_nac">
+                  <input *ngIf="estado==1" type="date" class="form-control" id="inlineFormInputGroup" [(ngModel)]="user.fecha_nac">
+
+                </div>
             </div>
-            <input [(ngModel)]="user.password" type="password" class="form-control" id="password" > 
-          </div>
-    
-          <div *ngIf="estado==1" class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" for="password">Confirmar contraseña:</span>
+
+            <div class="col">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Correo electrónico</div>
+                </div>
+                <input *ngIf="id>0" [(ngModel)]="user_e.email" type="email" class="form-control"> 
+                <input *ngIf="estado==1" [(ngModel)]="user.email" type="email" class="form-control"> 
+              </div>
             </div>
-            <input [(ngModel)]="user.password_confirmation" type="password" class="form-control" id="password_confirmation" > 
+
           </div>
-    
+
+          <div class="form-row">
+
+            <div class="col">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Contacto de emergencia:</div>
+                </div>
+                <input *ngIf="id>0" [(ngModel)]="user_e.emergencia" type="text" class="form-control"> 
+                <input *ngIf="estado==1" [(ngModel)]="user.emergencia" type="text" class="form-control">  
+              </div>
+            </div> 
+
+            <div class="col">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Teléfono de contacto de emergencia:</div>
+                </div>
+                <input *ngIf="id>0" [(ngModel)]="user_e.tel_emergencia" type="number" min="0" class="form-control"> 
+                <input *ngIf="estado==1" [(ngModel)]="user.tel_emergencia" type="number" min="0" class="form-control">  
+              </div>
+            </div> 
+
+          </div>
+
+          <div class="form-row">
+
+            <div class="col">
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Dirección:</div>
+                </div>
+                <textarea *ngIf="id>0" [(ngModel)]="user_e.direccion" type="text" class="form-control" rows="2"></textarea>
+                <textarea *ngIf="estado==1" [(ngModel)]="user_e.direccion" type="text" class="form-control" rows="2"></textarea>
+
+              </div>
+            </div> 
+
+          </div>
+
+          <div class="form-row">
+
+            <div class="col" >
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Rol del usuario:</div>
+                </div>
+                <div *ngIf="valor.id_rol==1">
+                  <select *ngIf="id>0" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="user_e.id_rol">
+                    <option disabled="disabled" >Selecciona el rol del usuario:</option>
+                    <ng-container *ngFor="let rol of roles">
+                      <option  *ngIf="rol.id>1" value="{{rol.id}}">{{rol.nombre}}</option>
+                    </ng-container>
+                    
+                  </select>
+  
+                  <select *ngIf="estado==1" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="user.id_rol">
+                    <option disabled="disabled" >Selecciona el rol del usuario:</option>
+                    <ng-container *ngFor="let rol of roles">
+                      <option  *ngIf="rol.id>1" value="{{rol.id}}">{{rol.nombre}}</option>
+                    </ng-container>
+                  </select>
+                </div>
+
+                <div *ngIf="valor.id_rol==2">
+                  <select *ngIf="id>0" class="custom-select mr-sm-2" id="inlineFormCustomSelect" for="disabledSelect" [(ngModel)]="user_e.id_rol">
+                    <option disabled="disabled">Selecciona el rol del usuario:</option>
+                    <ng-container *ngFor="let rol of roles">
+                      <option  *ngIf="rol.nombre=='Paciente'" value="{{rol.id}}">{{rol.nombre}}</option>
+                    </ng-container>
+                  </select>
+  
+                  <select *ngIf="estado==1" class="custom-select mr-sm-2" id="inlineFormCustomSelect" [(ngModel)]="user.id_rol">
+                    <option disabled="disabled">Selecciona el rol del usuario:</option>
+                    <ng-container *ngFor="let rol of roles">
+                      <option  *ngIf="rol.nombre=='Paciente'" value="{{rol.id}}">{{rol.nombre}}</option>
+                    </ng-container>
+                  </select>
+                </div>
+                
+              </div>
+            </div>
+
+          </div>
+
           
+          <br> 
+
           <div class="text-center">
-            <button *ngIf="id>0" (click)="update()" class="btn btn-info">Guardar</button>
+            <button  *ngIf="id>0" (click)="update()" class="btn btn-info">Guardar</button>
             <button *ngIf="estado==1" (click)="registrarUser()" class="btn btn-info">Registrar</button>
-    
+
           </div>
+          <br>
         </div>
         
         <footer class="blockquote-footer">Sistema de Cirugías<cite title="Source Title"> -Hospital de Mateo y Narda</cite></footer>
@@ -106,5 +223,4 @@
   </div>
   
 </div>
-
 

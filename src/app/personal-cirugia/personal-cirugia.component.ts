@@ -26,6 +26,9 @@ export class PersonalCirugiaComponent implements OnInit {
 public x;
 public y;
 
+public mensaje="";
+  public errores="";
+
   /* per_cir:Personal_cirugia={
     'id':null,
     'id_personal':this.personal['id'],
@@ -141,7 +144,8 @@ console.log(this.personal);
       'id_cirugia':this.activatedRoute.snapshot.params['id']
     };
     this.personalcirugiaService.save(datosss).subscribe((data) => {
-      alert (data['message']);
+      this.mensaje=data["message"];
+        this.errores=data["errores"];
       location.reload();
     }, error => {
         alert(error.error['message']);
@@ -150,7 +154,8 @@ console.log(this.personal);
   }
   eliminar(id){
     this.personalcirugiaService.eliminar(id).subscribe((data) => {
-      alert (data['message']);
+      this.mensaje=data["message"];
+        this.errores=data["errores"];
       location.reload();
     }, error => {
         alert(error.error['message']);

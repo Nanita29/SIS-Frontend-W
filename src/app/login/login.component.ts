@@ -10,9 +10,17 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   user:User={
-    //id: null,
     'name': null,
+    'apaterno': null,
+    'amaterno': null,
+    'carnet': null,
+    'celular': null,
+    'telefono': null,
+    'direccion': null,
+    'fecha_nac': null,
     'email': null,
+    'emergencia': null,
+    'tel_emergencia': null,
     'password': null,
     'password_confirmation': null,
     'id_rol': null,

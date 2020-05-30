@@ -42,5 +42,11 @@ export class UsuariosService {
     return this.httpClient.put(this.API_ENDPOINT + '/user/'+id, user_e, {headers: headers});
 
   }
+
+  restaurar(id){
+    const headers = new HttpHeaders( {'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("token")});
+    return this.httpClient.put(this.API_ENDPOINT + '/user/resetpass/'+id,null ,{headers: headers});
+
+  }
   
 }

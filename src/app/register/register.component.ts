@@ -16,19 +16,37 @@ export class RegisterComponent implements OnInit {
   user:User={
     //id: null,
     'name': null,
+    'apaterno': null,
+    'amaterno': null,
+    'carnet': null,
+    'celular': null,
+    'telefono': null,
+    'direccion': null,
+    'fecha_nac': null,
     'email': null,
+    'emergencia': null,
+    'tel_emergencia': null,
     'password': null,
     'password_confirmation': null,
-    'id_rol': '4',
+    'id_rol': null,
   };
 
   user_e:User={
     //id: null,
     'name': null,
+    'apaterno': null,
+    'amaterno': null,
+    'carnet': null,
+    'celular': null,
+    'telefono': null,
+    'direccion': null,
+    'fecha_nac': null,
     'email': null,
+    'emergencia': null,
+    'tel_emergencia': null,
     'password': null,
     'password_confirmation': null,
-    'id_rol': '4',
+    'id_rol': null,
   };
 
   id: any;
@@ -44,6 +62,8 @@ export class RegisterComponent implements OnInit {
     'name':null,
   };
 
+  public mensaje="";
+  public errores="";
   API_ENDPOINT= 'http://www.tallerdesis.com:8000/api'
 
   constructor(private usersService: UsuariosService, private activatedRoute: ActivatedRoute,private httpClient: HttpClient) { 
@@ -62,9 +82,19 @@ export class RegisterComponent implements OnInit {
       this.estado=0;
       console.log(this.id);
     this.recdat().subscribe((data) => {
-      console.log(data+"hola");
+      console.log(data);
       this.user_e['name']=data[0][0]['name'];
+      this.user_e['apaterno']=data[0][0]['apaterno'];
+      this.user_e['amaterno']=data[0][0]['amaterno'];
+      this.user_e['carnet']=data[0][0]['carnet'];
+      this.user_e['celular']=data[0][0]['celular'];
+      this.user_e['telefono']=data[0][0]['telefono'];
+      this.user_e['direccion']=data[0][0]['direccion'];
+      this.user_e['fecha_nac']=data[0][0]['fecha_nac'];
       this.user_e['email']=data[0][0]['email'];
+      this.user_e['emergencia']=data[0][0]['emergencia'];
+      this.user_e['tel_emergencia']=data[0][0]['tel_emergencia'];
+      this.user_e['id_rol']=data[0][0]['id_rol'];
       this.datitos=data[0];
     }, error => {
       console.log(error);
@@ -121,15 +151,18 @@ export class RegisterComponent implements OnInit {
 
   registrarUser(){
     this.usersService.save(this.user).subscribe((data) => {
-        alert(data["message"]);
+        
+        this.mensaje=data["message"];
+        this.errores=data["errores"];
+      
     }, error => {
-
-        //alert(error.error['message']);
-    });
+      alert(error.error['message']);
+  });
   } 
   update(){
     this.usersService.update(this.id,this.user_e).subscribe((data) => {
-      alert (data['message']);
+      this.mensaje=data["message"];
+        this.errores=data["errores"];
     }, error => {
         alert(error.error['message']);
     });

@@ -39,6 +39,8 @@ export class NuevopersonalComponent implements OnInit {
   public route;
   public valor;
   public estado;
+  public mensaje="";
+  public errores="";
   API_ENDPOINT= 'http://www.tallerdesis.com:8000/api'
 
   constructor(private personalService: PersonalService, private activatedRoute: ActivatedRoute,private httpClient: HttpClient) {
@@ -88,7 +90,8 @@ export class NuevopersonalComponent implements OnInit {
 
   registrar_personal(){
     this.personalService.save(this.personal).subscribe((data) => {
-      alert (data['message']);
+      this.mensaje=data["message"];
+        this.errores=data["errores"];
     }, error => {
         alert(error.error['message']);
     });
@@ -96,7 +99,8 @@ export class NuevopersonalComponent implements OnInit {
 
   update(){
     this.personalService.update(this.id,this.personal_e).subscribe((data) => {
-      alert (data['message']);
+      this.mensaje=data["message"];
+        this.errores=data["errores"];
     }, error => {
         alert(error.error['message']);
     });
