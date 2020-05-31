@@ -1,24 +1,113 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<div class="mx-auto" style="width: 1200px;">
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Awesome Search Box</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-  </head>
-  <!-- Coded with love by Mutiullah Samim-->
-  <body>
-    <div class="container h-100">
-      <div class="d-flex justify-content-center h-100">
-        <div class="searchbar">
-          <input class="search_input" type="text" name="" placeholder="Search...">
-          <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
-        </div>
-      </div>
+  <div *ngIf="mensaje=='Exito'">
+    <div class="alert alert-success" role="alert">
+    <strong>¡Su solicitud se ha completado con éxito!</strong>
     </div>
-  </body>
-</html>
+  </div>
+
+  <div *ngIf="mensaje=='fallo'">
+    <div class="alert alert-danger" role="alert">
+    <strong>¡Ha ocurrido un error!</strong> {{errores}}
+    </div>
+  </div>
+
+
+  <div class="card">
+    <div class="card-header">
+
+
+      <div *ngIf="id>0" class="h3">Modificar el insumo para la cirugía:</div>
+      <div *ngIf="estado==1" class="h3">Ingrese los insumoes para agregar a la cirugía </div>
+      
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+
+         <div class="form-row">
+
+          <div class="col">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Buscar por:</div>
+              </div>
+              <select class="form-control" id="selected" [(ngModel)]="selected">
+                <option value='nombre'>Nombre</option>
+                <option value='descripcion'>Descripción</option>
+              </select>
+    
+            </div>
+          </div> 
+
+          <div class="col" >
+            <div class="input-group mb-2">
+              
+              <div class="searchbar">
+                <input [(ngModel)]="filtertext"  class="search_input" type="text" name=""  placeholder="Nombre, descripción...">
+                <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
+              </div>
+              
+            </div>
+          </div>
+
+        </div>
+
+        <div class="h6">
+
+          <table class = "table table-bordered table-striped"  id="myTable">
+            <thead class = "thead-dark">
+              <tr >
+                <th scope="col" class="text-center">Id</th>
+                <th scope="col" class="text-center">Nombre</th>
+                <th scope="col" class="text-center">Descripción</th>
+                <th scope="col" class="text-center">Cantidad Disponible</th>
+                <th scope="col" class="text-center">Cantidad Requerida</th>
+                <th scope="col" class="text-center">Modificar</th>
+                <th scope="col" class="text-center">Eliminar</th>
+              </tr>
+            </thead> 
+        
+            <tbody>
+              <tr *ngFor="let insumo of insumo | insumoCirugia: filtertext: selected |  paginate: { itemsPerPage: 5, currentPage: pageActual }" >
+                <td class="text-center">{{insumo.id}}</td> 
+                <th class="text-center">{{insumo.nombre}}</th>
+                <th class="text-center">{{insumo.descripcion}}</th>
+                <th class="text-center">{{insumo.cantidad}}</th>
+                <td class="text-center">
+                  <div class="text-center">
+                    <input *ngIf="id>0" [(ngModel)]="insumo.cantidad_re"  type="number" min=1 class="form-control">
+                  </div>
+                </td> 
+                <td class="text-center">
+                  <div class="text-center">
+                    <button  *ngIf="insumo.estado>0"(click)="modificar(insumo.id, insumo.cantidad_re,insumo.id_insumo_cirugia)" class="btn btn-info">Modificar</button>
+                    
+                    <button *ngIf="insumo.estado==0 " (click)="agregar(insumo.id, insumo.cantidad_re)" class="btn btn-success">Agregar</button>
+                  </div>
+                </td> 
+                <td class="text-center">
+                  <div class="text-center">
+                    <button (click)="eliminar(insumo.id_insumo_cirugia)" class="btn btn-secondary">Eliminar</button>
+        
+                  </div>
+                </td> 
+              </tr>
+            </tbody>
+            
+          </table>
+
+          <pagination-controls  
+            (pageChange)="pageActual = $event" 
+            responsive="true"  
+            previousLabel="Anterior" 
+            nextLabel="Siguiente">
+          </pagination-controls>
+        </div>
+        
+        <footer class="blockquote-footer">Sistema de Cirugías<cite title="Source Title"> -Hospital de Mateo y Narda</cite></footer>
+      </blockquote>
+    </div>
+  </div>
+  
+</div>
+

@@ -5,8 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class InsumoCirugiaPipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
-    return null;
+  transform(insumo: any[], filtro: any, columna: any="selected"): any[] {
+    if (!filtro) return insumo;
+    return insumo.filter(insumo => (insumo[columna]).includes(filtro));
   }
 
 }
