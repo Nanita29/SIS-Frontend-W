@@ -19,7 +19,8 @@ describe('SalasComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('No tiene título', () => {
+    expect(document.querySelector(".h1")).toContain("<div _ngcontent-c1=' class='h1'>Salas</div>");
   });
 });
+

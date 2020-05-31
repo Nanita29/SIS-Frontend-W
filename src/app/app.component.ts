@@ -15,7 +15,7 @@ import { UsuariosService } from './services/usuarios.service';
 } */
 export class AppComponent implements OnInit {
 
-  title = 'Sistema de ';
+  title = 'Sistema de Cirugías';
 
   rol: any;
   nombre: any;
