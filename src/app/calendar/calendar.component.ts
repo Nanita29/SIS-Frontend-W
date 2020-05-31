@@ -4,6 +4,7 @@ import * as $ from 'jquery';
 import 'fullcalendar';
 import * as moment from 'moment';
 import { Cirugia } from '../interfaces/cirugia';
+import { CirugiasService } from '../services/cirugias.service';
 
 
 @Component({
@@ -31,8 +32,10 @@ export class CalendarComponent {
     'id_rol':null,
     'name':null,
   };
+  public mensaje="";
+  public errores="";
 ;
-  constructor(private httpClient: HttpClient) {
+  constructor(private cirugiasService: CirugiasService, private httpClient: HttpClient) {
 
     this.obtener_usuario().subscribe((data) => {        
       this.valor['name']=(data['name']);
@@ -172,13 +175,39 @@ export class CalendarComponent {
   }
   mostrar_cirugias() {
     const headers = new HttpHeaders( {'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("token")});
-    return this.httpClient.post(this.API_ENDPOINT + '/cirugia/getCirugias', {}, {headers: headers});
+    return this.httpClient.post(this.API_ENDPOINT + '/vistas/cirugias', {}, {headers: headers});
   }
 
   obtener_usuario(){
     const headers = new HttpHeaders( {'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("token")});
     return this.httpClient.post(this.API_ENDPOINT + '/auth/user', {}, {headers: headers});
 
+  }
+
+  cambiar_preparada(id){
+    var data={
+      'id_proceso':2, 
+    };
+    this.cirugiasService.cambiar(data,id).subscribe((data) => {
+      this.mensaje=data["message"];
+        this.errores=data["errores"];
+        location.reload();
+    }, error => {
+        alert(error.error['message']);
+    });
+  }
+
+  cambiar_espera(id){
+    var data={
+      'id_proceso':1, 
+    };
+    this.cirugiasService.cambiar(data,id).subscribe((data) => {
+      this.mensaje=data["message"];
+        this.errores=data["errores"];
+        location.reload();
+    }, error => {
+        alert(error.error['message']);
+    });
   }
 }
 

@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
   nombre: any;
   id: any;
   public estado;
+  public notificacion = 0;
   valor={
     'id':null,
     'id_rol':null,
@@ -51,6 +52,14 @@ export class AppComponent implements OnInit {
         console.log(error);
       
       });; 
+
+      this.notificacion_espera().subscribe((data) => {        
+        this.notificacion=data['message'];
+        console.log(this.notificacion);
+      }, error => {
+        console.log(error);
+      
+      });; 
   
     }
   
@@ -59,6 +68,12 @@ export class AppComponent implements OnInit {
     funciona(){
       const headers = new HttpHeaders( {'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("token")});
       return this.httpClient.post(this.API_ENDPOINT + '/auth/user', {}, {headers: headers});
+  
+    }
+
+    notificacion_espera(){
+      const headers = new HttpHeaders( {'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("token")});
+      return this.httpClient.post(this.API_ENDPOINT + '/vistas/cirugiasEspera', {}, {headers: headers});
   
     }
   }

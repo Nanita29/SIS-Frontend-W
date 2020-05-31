@@ -150,7 +150,7 @@ console.log(this.personal);
     }, error => {
         alert(error.error['message']);
     });
-    
+     
   }
   eliminar(id){
     this.personalcirugiaService.eliminar(id).subscribe((data) => {

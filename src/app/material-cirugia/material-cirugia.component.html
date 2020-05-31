@@ -75,19 +75,20 @@
                 <th class="text-center">{{material.cantidad}}</th>
                 <td class="text-center">
                   <div class="text-center">
-                    <input *ngIf="id>0"  type="text" class="form-control"> 
-                    <input *ngIf="estado==1"  type="text" class="form-control"> 
+                    <input *ngIf="id>0" [(ngModel)]="material.cantidad_re"  type="number" min=1 class="form-control"> 
+                    <!-- <input *ngIf="id>0" [(ngModel)]="material_en.nombre"  type="text" class="form-control">  -->
                   </div>
                 </td> 
                 <td class="text-center">
                   <div class="text-center">
-                    <button (click)="modificar()" class="btn btn-info">Modificar</button>
-        
+                    <button  *ngIf="material.estado>0"(click)="modificar(material.id, material.cantidad_re,material.id_material_cirugia)" class="btn btn-info">Modificar</button>
+                    
+                    <button *ngIf="material.estado==0 " (click)="agregar(material.id, material.cantidad_re)" class="btn btn-success">Agregar</button>
                   </div>
                 </td> 
                 <td class="text-center">
                   <div class="text-center">
-                    <button (click)="eliminar()" class="btn btn-secondary">Eliminar</button>
+                    <button (click)="eliminar(material.id_material_cirugia)" class="btn btn-secondary">Eliminar</button>
         
                   </div>
                 </td> 

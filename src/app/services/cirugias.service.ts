@@ -23,4 +23,10 @@ export class CirugiasService {
     return this.httpClient.put(this.API_ENDPOINT + '/cirugia/'+id, cirugia_e, {headers: headers});
 
   }
+
+  cambiar(data,id){
+    const headers = new HttpHeaders( {'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("token")});
+    return this.httpClient.put(this.API_ENDPOINT + '/cirugia/cambiarProceso/'+id, data, {headers: headers});
+
+  }
 }

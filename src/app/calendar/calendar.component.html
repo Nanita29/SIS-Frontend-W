@@ -1,7 +1,19 @@
 <div class="mx-auto" style="width: 1400px;" >
+  <div *ngIf="mensaje=='Exito'">
+    <div class="alert alert-success" role="alert">
+    <strong>¡Su solicitud se ha completado con éxito!</strong>
+    </div>
+  </div>
+
+  <div *ngIf="mensaje=='fallo'">
+    <div class="alert alert-danger" role="alert">
+    <strong>¡Ha ocurrido un error!</strong> {{errores}}
+    </div>
+  </div>
+  
   <div  class="card border-info mb-3">
     <div class="card-header">
-      <div *ngIf="valor.id_rol==1  || valor.id_rol==6" class="h3">Cirugías</div>
+      <div *ngIf="valor.id_rol==1  || valor.id_rol==6 || valor.id_rol==3" class="h3">Cirugías</div>
       <div *ngIf="valor.id_rol==2" class="h3">Mis Cirugías</div>
       
     </div>
@@ -51,7 +63,9 @@
                 <th *ngIf="valor.id_rol==2" scope="col" class="text-center">Personal</th>
                 <th *ngIf="valor.id_rol==2 || valor.id_rol==3" scope="col" class="text-center">Insumo</th>
                 <th *ngIf="valor.id_rol==2 || valor.id_rol==3" scope="col" class="text-center">Material</th>
-                <th *ngIf="valor.id_rol==6 || valor.id_rol==3" scope="col" class="text-center">Cambiar estado</th>
+                <th *ngIf="valor.id_rol==6" scope="col" class="text-center">Cambiar estado</th>
+                <th *ngIf="valor.id_rol==3" scope="col" class="text-center">Proceso actual:</th>
+                <th *ngIf="valor.id_rol==3" scope="col" class="text-center">Cambiar proceso a:</th>
                 
               </tr>
             </thead>
@@ -66,7 +80,14 @@
                 <td *ngIf="valor.id_rol==2" class="text-center"><a class="btn btn-info btn-sm" routerLink="/personal_cirugia/{{cirugia.id}}">Agregar-Editar</a></td>
                 <td *ngIf="valor.id_rol==2 || valor.id_rol==3" class="text-center"><a class="btn btn-info btn-sm" routerLink="/insumo_cirugia/{{cirugia.id}}">Agregar-Editar</a></td>
                 <td *ngIf="valor.id_rol==2 || valor.id_rol==3" class="text-center"><a class="btn btn-info btn-sm" routerLink="/material_cirugia/{{cirugia.id}}">Agregar-Editar</a></td>
-                <td *ngIf="valor.id_rol==6 || valor.id_rol==3" class="text-center"><a class="btn btn-info btn-sm" routerLink="/cirugias/{{cirugia.id}}">Modificar</a></td>
+                <td *ngIf="valor.id_rol==6" class="text-center"><a class="btn btn-info btn-sm" routerLink="/cirugias/{{cirugia.id}}">Modificar</a></td>
+                <th *ngIf="valor.id_rol==3"class="text-center">{{cirugia.proceso}}</th>
+                <div *ngIf="valor.id_rol==3">
+                  <td *ngIf="cirugia.id_proceso==1" class="text-center"><a class="btn btn-info btn-sm" (click)="cambiar_preparada(cirugia.id)">Preparada</a></td>
+                  <td *ngIf="cirugia.id_proceso==2" class="text-center"><a class="btn btn-info btn-sm" (click)="cambiar_espera(cirugia.id)">En espera</a></td>
+                </div>
+                
+                
               </tr>
             </tbody>
         
