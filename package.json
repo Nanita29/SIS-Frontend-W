@@ -34,6 +34,7 @@
     "moment": "^2.24.0",
     "ngx-pagination": "^5.0.0",
     "rxjs": "~6.2.0",
+    "selenium-webdriver": "^4.0.0-alpha.7",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
