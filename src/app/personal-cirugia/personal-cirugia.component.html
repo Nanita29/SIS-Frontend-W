@@ -16,14 +16,14 @@
     <div class="card-header">
 
 
-      <div *ngIf="id>0" class="h3">Modificar el personal para la cirugía número: {{id}}</div>
+      <div *ngIf="id>0" class="h3">Modificar el personal para la cirugía:</div>
       <div *ngIf="estado==1" class="h3">Ingrese los paciente para agregar a la cirugía </div>
       
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0">
 
-       <!--  <div class="form-row">
+        <div class="form-row">
 
           <div class="col">
             <div class="input-group mb-2">
@@ -42,18 +42,17 @@
             <div class="input-group mb-2">
               
               <div class="searchbar">
-                <input [(ngModel)]="filtertext"  class="search_input" type="text" name=""  placeholder="Nombre, descripción, estado...">
+                <input [(ngModel)]="filtertext"  class="search_input" type="text" name=""  placeholder="Nombre, cargo...">
                 <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
               </div>
               
             </div>
           </div>
 
-        </div> -->
+        </div>
 
         <div class="h6">
 
-          <!-- <input type="text" id="myInput" onkeyup="search()" placeholder="Buscar"> -->
 
           <table class = "table table-bordered table-striped"  id="myTable">
             <thead class = "thead-dark">
@@ -66,7 +65,7 @@
             </thead> 
         
             <tbody>
-              <tr *ngFor="let personal of personal | paginate: { itemsPerPage: 5, currentPage: pageActual }" >
+              <tr *ngFor="let personal of personal | personalCirugia: filtertext: selected | paginate: { itemsPerPage: 5, currentPage: pageActual }" >
                
                 <td class="text-center" >{{personal.id}}</td> 
                 <th class="text-center" >{{personal.nombre}} {{personal.apellidoP}} {{personal.apellidoM}}</th>
@@ -85,7 +84,7 @@
 
           <pagination-controls  
             (pageChange)="pageActual = $event" 
-            responsive="true" 
+            responsive="true"  
             previousLabel="Anterior" 
             nextLabel="Siguiente">
           </pagination-controls>

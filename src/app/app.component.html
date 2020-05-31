@@ -46,6 +46,14 @@
               Materiales
             </a>
           </li>
+          <li class="nav-item">
+            <a *ngIf="valor.id_rol==3" class="nav-link" routerLink="/calendar" tabindex="-1" aria-disabled="true">
+              <i class="fa fa-users">
+                <span class="badge badge-danger">11</span>
+              </i>
+              Cirugías
+            </a>
+          </li>
 
           <!--PANTALLAS DE ADMINISTRADOR ROL 1-->
 
@@ -81,9 +89,7 @@
           </li>
           <li class="nav-item">
             <a *ngIf="valor.id_rol==1" class="nav-link" routerLink="/materiales" tabindex="-1" aria-disabled="true">
-              <i class="fa fa-stethoscope">
-                <span class="badge badge-danger">11</span>
-              </i>
+              <i class="fa fa-stethoscope"></i>
               Materiales
             </a>
           </li>
@@ -91,7 +97,7 @@
           <!--PANTALLAS DE ASISTENTE 6-->
 
           <li class="nav-item">
-            <a *ngIf="valor.id_rol==2" class="nav-link" routerLink="/calendar" tabindex="-1" aria-disabled="true">
+            <a *ngIf="valor.id_rol==6" class="nav-link" routerLink="/calendar" tabindex="-1" aria-disabled="true">
               <i class="fa fa-users"></i>
               Cirugías
             </a>

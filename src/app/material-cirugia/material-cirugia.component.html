@@ -1,18 +1,58 @@
-
 <div class="mx-auto" style="width: 1200px;">
+
+  <div *ngIf="mensaje=='Exito'">
+    <div class="alert alert-success" role="alert">
+    <strong>¡Su solicitud se ha completado con éxito!</strong>
+    </div>
+  </div>
+
+  <div *ngIf="mensaje=='fallo'">
+    <div class="alert alert-danger" role="alert">
+    <strong>¡Ha ocurrido un error!</strong> {{errores}}
+    </div>
+  </div>
+
+
   <div class="card">
     <div class="card-header">
 
 
-      <div *ngIf="id>0" class="h3">Modificar el material para la cirugía número:</div>
+      <div *ngIf="id>0" class="h3">Modificar el material para la cirugía:</div>
       <div *ngIf="estado==1" class="h3">Ingrese los materiales para agregar a la cirugía </div>
       
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0">
-        <div class="h6">
 
-          <!-- <input type="text" id="myInput" onkeyup="search()" placeholder="Buscar"> -->
+         <div class="form-row">
+
+          <div class="col">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Buscar por:</div>
+              </div>
+              <select class="form-control" id="selected" [(ngModel)]="selected">
+                <option value='nombre'>Nombre</option>
+                <option value='descripcion'>Descripción</option>
+              </select>
+    
+            </div>
+          </div> 
+
+          <div class="col" >
+            <div class="input-group mb-2">
+              
+              <div class="searchbar">
+                <input [(ngModel)]="filtertext"  class="search_input" type="text" name=""  placeholder="Nombre, descripción...">
+                <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
+              </div>
+              
+            </div>
+          </div>
+
+        </div>
+
+        <div class="h6">
 
           <table class = "table table-bordered table-striped"  id="myTable">
             <thead class = "thead-dark">
@@ -20,23 +60,34 @@
                 <th scope="col" class="text-center">Id</th>
                 <th scope="col" class="text-center">Nombre</th>
                 <th scope="col" class="text-center">Descripción</th>
-                <th scope="col" class="text-center">Cantidad Existente</th>
+                <th scope="col" class="text-center">Cantidad Disponible</th>
                 <th scope="col" class="text-center">Cantidad Requerida</th>
-                <th scope="col" class="text-center">Acción</th>
+                <th scope="col" class="text-center">Modificar</th>
+                <th scope="col" class="text-center">Eliminar</th>
               </tr>
             </thead> 
         
             <tbody>
-              <tr *ngFor="let material of material " >
+              <tr *ngFor="let material of material | materialCirugia: filtertext: selected |  paginate: { itemsPerPage: 5, currentPage: pageActual }" >
                 <td class="text-center">{{material.id}}</td> 
                 <th class="text-center">{{material.nombre}}</th>
                 <th class="text-center">{{material.descripcion}}</th>
                 <th class="text-center">{{material.cantidad}}</th>
-                <th class="text-center">{{material.cantidad}}</th>
                 <td class="text-center">
                   <div class="text-center">
-                    <button  *ngIf="id>0" (click)="quitar()" class="btn btn-info">Eliminar</button>
-                    <button *ngIf="estado==1" (click)="agregar()" class="btn btn-info">Agregar</button>
+                    <input *ngIf="id>0"  type="text" class="form-control"> 
+                    <input *ngIf="estado==1"  type="text" class="form-control"> 
+                  </div>
+                </td> 
+                <td class="text-center">
+                  <div class="text-center">
+                    <button (click)="modificar()" class="btn btn-info">Modificar</button>
+        
+                  </div>
+                </td> 
+                <td class="text-center">
+                  <div class="text-center">
+                    <button (click)="eliminar()" class="btn btn-secondary">Eliminar</button>
         
                   </div>
                 </td> 
@@ -44,6 +95,13 @@
             </tbody>
             
           </table>
+
+          <pagination-controls  
+            (pageChange)="pageActual = $event" 
+            responsive="true"  
+            previousLabel="Anterior" 
+            nextLabel="Siguiente">
+          </pagination-controls>
         </div>
         
         <footer class="blockquote-footer">Sistema de Cirugías<cite title="Source Title"> -Hospital de Mateo y Narda</cite></footer>

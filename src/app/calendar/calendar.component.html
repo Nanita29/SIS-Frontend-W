@@ -49,9 +49,10 @@
                 <th scope="col" class="text-center">Fecha de Cirugía</th>
                 <th *ngIf="valor.id_rol==1 || valor.id_rol==2" scope="col" class="text-center">Detalles</th>
                 <th *ngIf="valor.id_rol==2" scope="col" class="text-center">Personal</th>
-                <th *ngIf="valor.id_rol==2" scope="col" class="text-center">Insumo</th>
-                <th *ngIf="valor.id_rol==2" scope="col" class="text-center">Material</th>
-                <th *ngIf="valor.id_rol==6" scope="col" class="text-center">Cambiar estado</th>
+                <th *ngIf="valor.id_rol==2 || valor.id_rol==3" scope="col" class="text-center">Insumo</th>
+                <th *ngIf="valor.id_rol==2 || valor.id_rol==3" scope="col" class="text-center">Material</th>
+                <th *ngIf="valor.id_rol==6 || valor.id_rol==3" scope="col" class="text-center">Cambiar estado</th>
+                
               </tr>
             </thead>
         
@@ -63,9 +64,9 @@
                 <th class="text-center">{{cirugia.fechaSalida}}</th>
                 <td *ngIf="valor.id_rol==1 || valor.id_rol==2" class="text-center"><a class="btn btn-info btn-sm" routerLink="/cirugias/{{cirugia.id}}">Ver-Editar</a></td>
                 <td *ngIf="valor.id_rol==2" class="text-center"><a class="btn btn-info btn-sm" routerLink="/personal_cirugia/{{cirugia.id}}">Agregar-Editar</a></td>
-                <td *ngIf="valor.id_rol==2" class="text-center"><a class="btn btn-info btn-sm" routerLink="/insumo_cirugia/{{cirugia.id}}">Agregar-Editar</a></td>
-                <td *ngIf="valor.id_rol==2" class="text-center"><a class="btn btn-info btn-sm" routerLink="/material_cirugia/{{cirugia.id}}">Agregar-Editar</a></td>
-                <td *ngIf="valor.id_rol==6" class="text-center"><a class="btn btn-info btn-sm" routerLink="/cirugias/{{cirugia.id}}">Modificar</a></td>
+                <td *ngIf="valor.id_rol==2 || valor.id_rol==3" class="text-center"><a class="btn btn-info btn-sm" routerLink="/insumo_cirugia/{{cirugia.id}}">Agregar-Editar</a></td>
+                <td *ngIf="valor.id_rol==2 || valor.id_rol==3" class="text-center"><a class="btn btn-info btn-sm" routerLink="/material_cirugia/{{cirugia.id}}">Agregar-Editar</a></td>
+                <td *ngIf="valor.id_rol==6 || valor.id_rol==3" class="text-center"><a class="btn btn-info btn-sm" routerLink="/cirugias/{{cirugia.id}}">Modificar</a></td>
               </tr>
             </tbody>
         

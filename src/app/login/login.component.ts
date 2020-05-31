@@ -25,6 +25,9 @@ export class LoginComponent implements OnInit {
     'password_confirmation': null,
     'id_rol': null,
   };
+
+  public mensaje="";
+  public errores="";
   constructor(private usersService: UsuariosService, private router: Router) { 
     /* this.user = this.usersService.save(
      {
@@ -46,10 +49,12 @@ export class LoginComponent implements OnInit {
 
   ingresarCuenta(){
     this.usersService.ingresar(this.user).subscribe((data) => {
-      alert ('Inicio con éxito');
+      this.mensaje=data["message"];
+        this.errores=data["errores"];
       /* console.log(data['access_token']);
       console.log(data); */
-      this.router.navigate(['/pacientes']);
+     
+     this.router.navigate(['/calendar']);
       localStorage.setItem("token",data['access_token']);
 
     }, (errorServicio) => {

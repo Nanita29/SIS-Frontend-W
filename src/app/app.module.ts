@@ -34,6 +34,8 @@ import { CirugiaPipe } from './calendar/cirugia.pipe';
 import { PacientePipe } from './pacientes/paciente.pipe';
 
 import { PersonalCirugiaPipe } from './personal-cirugia/personal-cirugia.pipe';
+import { MaterialCirugiaPipe } from './material-cirugia/material-cirugia.pipe';
+import { InsumoCirugiaPipe } from './insumo-cirugia/insumo-cirugia.pipe';
 
 const routes: Route[] = [
   {path: '', component: LoginComponent},
@@ -88,7 +90,9 @@ const routes: Route[] = [
     SalaPipe,
     CirugiaPipe,
     PacientePipe,
-    PersonalCirugiaPipe
+    PersonalCirugiaPipe,
+    InsumoCirugiaPipe,
+    MaterialCirugiaPipe
   ],
   
   imports: [
