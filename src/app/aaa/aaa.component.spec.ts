@@ -22,4 +22,7 @@ describe('AaaComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('prueba h1', () => {
+    expect(document.getElementById("h1")).toContain("HOLA");
+  });
 });
