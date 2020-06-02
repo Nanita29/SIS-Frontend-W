@@ -22,7 +22,13 @@ describe('AaaComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+<<<<<<< Updated upstream
   it('prueba h1', () => {
     expect(document.getElementById("h1")).toContain("HOLA");
+=======
+
+  it('prueba h1', () => {
+    expect(document.getElementById("h1").textContent).toEqual("HOLA");
+>>>>>>> Stashed changes
   });
 });
