@@ -37,7 +37,7 @@ export class PersonalComponent implements OnInit {
 
   obtener_personal(){
     const headers = new HttpHeaders( {'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("token")});
-    return this.httpClient.post(this.API_ENDPOINT + '/vistas/cirugias', {}, {headers: headers});
+    return this.httpClient.post(this.API_ENDPOINT + '/vistas/personal', {}, {headers: headers});
 
   }
 

@@ -53,14 +53,14 @@
                 <th scope="col" class="text-center">Acción</th>
               </tr>
             </thead>
-         
+          
             <tbody>
-               <tr *ngFor="let insumo of insumos | insumo: filtertext: selected | paginate: { itemsPerPage: 5, currentPage: pageActual }">
-                <td class="text-center" *ngIf="insumo.estado==0">{{insumo.id}}</td> 
-                <th class="text-center" *ngIf="insumo.estado==0">{{insumo.nombre}}</th>
-                <th class="text-center" *ngIf="insumo.estado==0">{{insumo.descripcion}}</th>
-                <th class="text-center" *ngIf="insumo.estado==0">{{insumo.cantidad}}</th>
-                <td class="text-center" *ngIf="insumo.estado==0"><a class="btn btn-info btn-sm" routerLink="/nuevoinsumo/{{insumo.id}}">Ver-Editar</a></td> 
+              <tr *ngFor="let insumo of insumos | insumo: filtertext: selected | paginate: { itemsPerPage: 5, currentPage: pageActual }">
+                <td class="text-center" *ngIf="insumo.estadoe==0">{{insumo.id}}</td> 
+                <th class="text-center" *ngIf="insumo.estadoe==0">{{insumo.nombre}}</th>
+                <th class="text-center" *ngIf="insumo.estadoe==0">{{insumo.descripcion}}</th>
+                <th class="text-center" *ngIf="insumo.estadoe==0">{{insumo.cantidad}}</th>
+                <td class="text-center" *ngIf="insumo.estadoe==0"><a class="btn btn-info btn-sm" routerLink="/nuevoinsumo/{{insumo.id}}">Ver-Editar</a></td> 
                </tr>
             </tbody>
             
@@ -80,11 +80,11 @@
          
             <tbody>
                <tr *ngFor="let insumo of insumos | insumo: filtertext: selected | paginate: { itemsPerPage: 5, currentPage: pageActual }">
-                <td class="text-center" *ngIf="insumo.estado==1">{{insumo.id}}</td> 
-                <th class="text-center" *ngIf="insumo.estado==1">{{insumo.nombre}}</th>
-                <th class="text-center" *ngIf="insumo.estado==1">{{insumo.descripcion}}</th>
-                <th class="text-center" *ngIf="insumo.estado==1">{{insumo.cantidad}}</th>
-                <td class="text-center" *ngIf="insumo.estado==1"><a class="btn btn-info btn-sm" routerLink="/nuevoinsumo/{{insumo.id}}">Habilitar-Editar</a></td> 
+                <td class="text-center" *ngIf="insumo.estadoe==1">{{insumo.id}}</td> 
+                <th class="text-center" *ngIf="insumo.estadoe==1">{{insumo.nombre}}</th>
+                <th class="text-center" *ngIf="insumo.estadoe==1">{{insumo.descripcion}}</th>
+                <th class="text-center" *ngIf="insumo.estadoe==1">{{insumo.cantidad}}</th>
+                <td class="text-center" *ngIf="insumo.estadoe==1"><a class="btn btn-info btn-sm" routerLink="/nuevoinsumo/{{insumo.id}}">Habilitar-Editar</a></td> 
                </tr>
             </tbody>
             
