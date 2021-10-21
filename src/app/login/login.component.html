@@ -1,11 +1,11 @@
 <div *ngIf="mensaje=='Exito'">
-  <div class="alert alert-success" role="alert">
+  <div class="alert alert-success" id="alert">
   <strong>¡Su solicitud se ha completado con éxito!</strong>
   </div>
 </div>
 
 <div *ngIf="mensaje=='fallo'">
-  <div class="alert alert-danger" role="alert">
+  <div class="alert alert-danger" id="alert">
   <strong>¡Ha ocurrido un error!</strong> {{errores}}
   </div>
 </div>
@@ -23,14 +23,14 @@
             <h4>Inicie sesión:</h4>
             <form>
               <div class="form-group">
-                <input [(ngModel)]="user.email" type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Correo electrónico"> 
+                <input [(ngModel)]="user.email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Correo electrónico"> 
               </div>
           
               <div class="form-group">
-                <input [(ngModel)]="user.password"type="password" class="form-control" name="password" placeholder="Contaseña"> 
+                <input [(ngModel)]="user.password"type="password" class="form-control" id="password" placeholder="Contaseña"> 
               </div>
           
-              <button (click)="ingresarCuenta()" class="btn btn-lg btn-primary">Ingresar</button>
+              <button (click)="ingresarCuenta()" id="ingresar_cuenta" class="btn btn-lg btn-primary">Ingresar</button>
           
             </form>
           </div>
