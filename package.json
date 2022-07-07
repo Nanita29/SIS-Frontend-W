@@ -31,7 +31,7 @@
     "fullcalendar": "^3.10.1",
     "jquery": "^3.5.0",
     "modal-service": "^1.0.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "ngx-pagination": "^5.0.0",
     "rxjs": "~6.2.0",
     "selenium-webdriver": "^4.0.0-alpha.7",
